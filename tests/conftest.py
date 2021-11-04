@@ -10,6 +10,12 @@ def prep_properties():
     return ConfigParserIni("props.ini")
 
 
+@pytest.fixture(scope="function", autouse=True)
+# instantiates ini file parses object
+def prep_properties(page):
+    page.goto("")
+
+
 @pytest.fixture(autouse=True)
 # Performs setup and tear down
 def attach_playwright_results(page, prep_properties, request):
