@@ -44,7 +44,7 @@ pipenv install
 ## Run Tests
 
 ```
-pipenv run pytest --alluredir=allure-results --browser <firefox/remote/chrome_headless>
+pipenv run pytest --alluredir=allure-results
 ```
 
 if no browser was selected then chrome will be used.
@@ -52,7 +52,7 @@ if no browser was selected then chrome will be used.
 * Run according to tags:
 
 ```
-pipenv run pytest -k "<tag_name>" --browser <firefox/chrome/remote/chrome_headless>
+pipenv run pytest -k "<tag_name>"
 ```
 
 ## View Test Results
