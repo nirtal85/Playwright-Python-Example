@@ -1,31 +1,42 @@
 ![Python application](https://github.com/nirtal85/Selenium-Python-Example/workflows/Python%20application/badge.svg)
 
-## Setup Your Working Enviorment
+## Setup Your Working Environment
 
 * Install scoop from www.scoop.sh
 * Install allure commandline by running the following command:
+
 ```
 scoop install allure
 ```
+
 * git clone
-* cd to project directory 
+* cd to project directory
 * Install virtualenv:
+
 ```
 py -m pip install --user virtualenv
 ```
-* Create a virtual environment: 
+
+* Create a virtual environment:
+
 ```
 py -m venv env
 ```
+
 * Activate your virtual environment:
+
 ```
 .\env\Scripts\activate
 ```
+
 * install pipenv:
+
 ```
 pip install pipenv
 ```
-* install project dependencies using pipenv: 
+
+* install project dependencies using pipenv:
+
 ```
 pipenv install
 ```
@@ -35,17 +46,19 @@ pipenv install
 ```
 pipenv run pytest --alluredir=allure-results --browser <firefox/remote/chrome_headless>
 ```
+
 if no browser was selected then chrome will be used.
 
 * Run according to tags:
+
 ```
 pipenv run pytest -k "<tag_name>" --browser <firefox/chrome/remote/chrome_headless>
 ```
 
 ## View Test Results
 
+* view allure results:
 
-* view allure results: 
 ```
 allure serve allure-results
 ```
