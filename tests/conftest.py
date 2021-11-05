@@ -11,8 +11,8 @@ def prep_properties():
 
 
 @pytest.fixture(scope="function", autouse=True)
-# instantiates ini file parses object
-def prep_properties(page):
+# navigate to base URL
+def goto(page):
     page.goto("")
 
 
@@ -26,7 +26,7 @@ def attach_playwright_results(page, prep_properties, request):
 
 
 @pytest.hookimpl(tryfirst=True, hookwrapper=True)
-def pytest_runtest_makereport(item, call):
+def pytest_runtest_makereport(item):
     # execute all other hooks to obtain the report object
 
     outcome = yield
