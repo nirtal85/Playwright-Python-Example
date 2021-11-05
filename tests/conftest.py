@@ -16,6 +16,17 @@ def goto(page):
     page.goto("")
 
 
+@pytest.fixture(scope="session")
+def browser_context_args(browser_context_args):
+    return {
+        **browser_context_args,
+        "viewport": {
+            "width": 1920,
+            "height": 1080,
+        }
+    }
+
+
 @pytest.fixture(autouse=True)
 # Performs setup and tear down
 def attach_playwright_results(page, prep_properties, request):
