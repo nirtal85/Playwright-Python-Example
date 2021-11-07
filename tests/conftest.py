@@ -27,8 +27,17 @@ def browser_context_args(browser_context_args):
     }
 
 
+@pytest.fixture(scope="function")
+# Instantiates Page Objects
+def elements(page):
+    return dict(user_name_field=page.locator("[data-test='username']"),
+                password_field=page.locator("[data-test='password']"),
+                login_button=page.locator("[data-test='login-button']"),
+                error_message=page.locator("[data-test='error']"))
+
+
 @pytest.fixture(autouse=True)
-# Performs tear down actions
+# Performs tear down pages
 def attach_playwright_results(page, prep_properties, request):
     yield
     if request.node.rep_call.failed:
