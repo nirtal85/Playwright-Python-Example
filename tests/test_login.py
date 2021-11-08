@@ -21,7 +21,8 @@ class TestLogin:
     def test_invalid_login(self, page, elements):
         self.login_page.login("standard_user", "secret_sauce1")
         assert self.login_page.get_error_message_text() == ex_error_message, \
-            f"Expected invalid login error message to be {ex_error_message}, but got {self.login_page.get_error_message_text()} instead "
+            f"Expected invalid login error message to be {ex_error_message}, " \
+            f"but got {self.login_page.get_error_message_text()} instead "
 
     def test_locked_out_user(self, page, elements):
         self.login_page.login("locked_out_user", "secret_sauce")

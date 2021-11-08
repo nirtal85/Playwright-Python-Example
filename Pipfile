@@ -22,7 +22,6 @@ iniconfig = "==1.1.1"
 pipenv = "==2021.5.29"
 pluggy = "==1.0.0"
 py = "==1.10.0"
-pyparsing = "*"
 pytest = "==6.2.5"
 pytest-ordering = "==0.6"
 requests = "==2.26.0"
@@ -32,7 +31,8 @@ urllib3 = "==1.26.7"
 virtualenv = "==20.9.0"
 virtualenv-clone = "==0.5.7"
 playwright = "==1.16.1"
-pytest-playwright = "*"
+pytest-playwright = "==0.2.2"
+selenium = "*"
 
 [dev-packages]
 
