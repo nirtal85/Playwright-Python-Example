@@ -1,4 +1,3 @@
-from selenium.webdriver.support.ui import Select
 import allure
 
 
@@ -38,6 +37,10 @@ class InventoryPage:
             aux_list.append(i.locator(".inventory_item_name").text_content())
         return aux_list
 
+    @allure.step("Check if 'Remove' button is displayed")
+    def is_remove_button_displayed(self):
+        return self.page.is_visible("data-test='remove-sauce-labs-backpack'")
+
     @allure.step("Add item {item_name} to cart")
     def add_item_to_cart(self, item_name):
         for i in self.__ITEMS_LIST:
@@ -47,12 +50,11 @@ class InventoryPage:
 
     @allure.step("Sort items according to {property_name}")
     def select_sorting_according_to_property(self, property_name):
-        select = Select(self.__SORT_FIELD)
         if property_name == "name_asc":
-            select.select_by_value("az")
+            self.__SORT_FIELD.select_option(value="az")
         elif property_name == "name_desc":
-            select.select_by_value("za")
+            self.__SORT_FIELD.select_option(value="za")
         elif property_name == "price_asc":
-            select.select_by_value("lohi")
+            self.__SORT_FIELD.select_option(value="lohi")
         elif property_name == "price_desc":
-            select.select_by_value("hilo")
+            self.__SORT_FIELD.select_option(value="hilo")
