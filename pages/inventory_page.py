@@ -8,6 +8,7 @@ class InventoryPage:
         self.__SORT_FIELD = self.page.locator("[data-test='product_sort_container']")
         self.__HAMBURGER_MENU_BUTTON = self.page.locator("#react-burger-menu-btn")
         self.__ITEMS_LIST = self.page.locator(".inventory_list>div")
+        self.__NUMBER_OF_ITEMS_IN_CART = self.page(".shopping_cart_badge")
 
     @allure.step("Click on cart icon")
     def click_cart(self):
@@ -22,6 +23,10 @@ class InventoryPage:
         for i in self.__ITEMS_LIST:
             if item_name == i.text_content():
                 return i.locator(".inventory_item_price").text_content().split("$")[1]
+
+    @allure.step("Get the number of items in cart displayed on cart icon")
+    def get_items_in_cart_number(self):
+        return self.__NUMBER_OF_ITEMS_IN_CART.text_content()
 
     @allure.step("Get all items prices")
     def get_all_prices(self):
@@ -44,7 +49,7 @@ class InventoryPage:
     @allure.step("Add item {item_name} to cart")
     def add_item_to_cart(self, item_name):
         for i in self.__ITEMS_LIST:
-            if item_name == i.text_content():
+            if item_name == i.locator(".inventory_item_name").text_content():
                 i.locator("data-test='add-to-cart-sauce-labs-backpack'").click()
                 break
 

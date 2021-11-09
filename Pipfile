@@ -32,7 +32,6 @@ virtualenv = "==20.9.0"
 virtualenv-clone = "==0.5.7"
 playwright = "==1.16.1"
 pytest-playwright = "==0.2.2"
-selenium = "*"
 
 [dev-packages]
 
