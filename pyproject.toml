@@ -1,0 +1,56 @@
+[tool.poetry]
+name = "playwright-python"
+version = "0.1.0"
+description = ""
+authors = ["nirtal85 <nirt236@gmail.com>"]
+readme = "README.md"
+packages = [{include = "playwright_python"}]
+
+[tool.pytest.ini_options]
+addopts = [
+    "--alluredir=allure-results",
+    "--color=yes",
+    "--headed",
+    "--screenshot=only-on-failure",
+    "--video=retain-on-failure",
+]
+base_url = 'https://www.saucedemo.com/'
+
+[tool.poetry.dependencies]
+python = "^3.11"
+allure-pytest = "2.13.2"
+allure-python-commons = "2.13.2"
+appdirs = "1.4.4"
+assertpy = "1.1"
+atomicwrites = "1.4.1"
+attrs = "23.1.0"
+certifi = "2023.7.22"
+chardet = "5.2.0"
+colorama = "0.4.6"
+configparser = "6.0.0"
+crayons = "0.4.0"
+distlib = "0.3.7"
+filelock = "3.12.2"
+idna = "3.4"
+iniconfig = "2.0.0"
+packaging = "23.1"
+pipenv = "2023.7.23"
+pluggy = "1.2.0"
+py = "1.11.0"
+pyparsing = "3.1.1"
+pytest = "7.4.0"
+pytest-ordering = "0.6"
+requests = "2.31.0"
+six = "1.16.0"
+toml = "0.10.2"
+urllib3 = "2.0.4"
+virtualenv = "20.24.3"
+virtualenv-clone = "0.5.7"
+playwright = "1.36.0"
+pytest-playwright = "0.4.2"
+pytest-base-url = "^2.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
