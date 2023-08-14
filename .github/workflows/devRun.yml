@@ -36,10 +36,12 @@ jobs:
         run: poetry install --no-interaction --no-root
       - name: Install plugin
         run: pip install pytest-github-actions-annotate-failures
+      - name: Install playwright chromium
+        run: npx playwright install-deps chromium
       - name: Test with pytest
         run: |
           source .venv/bin/activate
-          pytest --browser chrome_headless -m devRun
+          pytest -m devRun
       - name: Add allure information
         working-directory: allure-results
         if: always()
