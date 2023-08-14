@@ -2,6 +2,7 @@ import json
 
 import allure
 import pytest
+from playwright.sync_api import Page
 
 from utils.config_parser import ConfigParserIni
 
@@ -14,7 +15,7 @@ def prep_properties():
 
 @pytest.fixture(scope="function", autouse=True)
 # navigate to base URL
-def goto(page):
+def goto(page: Page):
     page.goto("")
 
 
@@ -29,20 +30,9 @@ def browser_context_args(browser_context_args):
     }
 
 
-@pytest.fixture(scope="function")
-# Instantiates Page Objects
-def elements(page):
-    return dict(
-        user_name_field=page.locator("[data-test='username']"),
-        password_field=page.locator("[data-test='password']"),
-        login_button=page.locator("[data-test='login-button']"),
-        error_message=page.locator("[data-test='error']"),
-    )
-
-
 @pytest.fixture(autouse=True)
 # Performs tear down pages
-def attach_playwright_results(page, request):
+def attach_playwright_results(page: Page, request):
     response_list = []
     page.on(
         "response",
@@ -51,12 +41,13 @@ def attach_playwright_results(page, request):
         ),
     )
     yield
-    allure.attach(
-        json.dumps(response_list),
-        name="Response",
-        attachment_type=allure.attachment_type.JSON,
-    )
+
     if request.node.rep_call.failed:
+        allure.attach(
+            json.dumps(response_list, indent=4),
+            name="Response",
+            attachment_type=allure.attachment_type.JSON,
+        )
         allure.attach(
             page.screenshot(full_page=True),
             name="Screen shot on failure",
