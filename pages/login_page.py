@@ -1,13 +1,15 @@
 import typing
 from dataclasses import dataclass
+
 import allure
+from playwright.sync_api import Locator
 
 
 @allure.severity(allure.severity_level.CRITICAL)
 @allure.story("Login page behavior")
 @dataclass
 class LoginPage:
-    elements: typing.Dict
+    elements: typing.Dict[str, Locator]
 
     @allure.step("Login with username {username} and password {password}")
     def login(self, username, password):
