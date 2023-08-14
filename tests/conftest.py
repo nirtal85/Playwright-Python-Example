@@ -1,3 +1,5 @@
+import json
+
 import allure
 import pytest
 
@@ -38,8 +40,13 @@ def elements(page):
 
 @pytest.fixture(autouse=True)
 # Performs tear down pages
-def attach_playwright_results(page, prep_properties, request):
+def attach_playwright_results(page, request):
+    response_list = []
+    page.on("response",
+            lambda response: response_list.extend([response.all_headers(), response.status]))
     yield
+    allure.attach(json.dumps(response_list), name="Response",
+                  attachment_type=allure.attachment_type.JSON)
     if request.node.rep_call.failed:
         allure.attach(page.screenshot(full_page=True), name="Screen shot on failure",
                       attachment_type=allure.attachment_type.PNG)
