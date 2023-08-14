@@ -15,7 +15,6 @@ addopts = [
     "--alluredir=allure-results",
     "--color=yes",
     "--headed",
-    "--screenshot=only-on-failure",
     "--video=retain-on-failure",
 ]
 base_url = 'https://www.saucedemo.com/'
