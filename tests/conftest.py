@@ -37,7 +37,7 @@ def attach_playwright_results(page: Page, request):
     page.on(
         "response",
         lambda response: response_list.extend(
-            [response.all_headers(), response.status]
+            [response.all_headers(), response.status, response.url]
         ),
     )
     yield
