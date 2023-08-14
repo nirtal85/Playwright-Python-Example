@@ -1,73 +1,82 @@
+# Selenium Python Example
+
 ![Python application](https://github.com/nirtal85/Selenium-Python-Example/workflows/Python%20application/badge.svg)
 
-## Setup Your Working Environment
+## Articles written about this project
 
-* Install scoop from www.scoop.sh
+## Project Setup
+
+* [Install scoop](https://scoop.sh/)
 * Install allure commandline by running the following command:
 
-```
+```bash
 scoop install allure
 ```
 
-* git clone
-* cd to project directory
+* Clone the project
+* Navigate to the project directory
 * Install virtualenv:
 
-```
+```bash
 py -m pip install --user virtualenv
 ```
 
 * Create a virtual environment:
 
-```
+```bash
 py -m venv env
 ```
 
-* Activate your virtual environment:
+* Activate the virtual environment:
 
-```
+```bash
 .\env\Scripts\activate
 ```
 
-* install pipenv:
+* Install project dependencies:
 
 ```
-pip install pipenv
+poetry install
 ```
 
-* install project dependencies using pipenv:
+## Running Tests
 
-```
-pipenv install
-```
-
-## Run Tests
-
-```
-pipenv run pytest --alluredir=allure-results
+```bash
+pytest --browser <firefox/chrome_headless>
 ```
 
-if no browser was selected then chrome will be used.
+When no browser was selected then chrome will be used.
 
-* Run according to tags:
+* Run tests:
 
+```bash
+pytest
 ```
-pipenv run pytest -k "<tag_name>"
-```
 
-## View Test Results
+## Viewing Test Results
 
-* view allure results:
+* View allure results locally:
 
-```
+```bash
 allure serve allure-results
 ```
 
-<ins>GitHub Pages allure results:</ins><br/>
-https://github.com/nirtal85/Selenium-Python-Example/deployments/activity_log?environment=github-pages
+* [View allure results via Github pages](https://nirtal85.github.io/Selenium-Python-Example/)
 
 ## View Help And Custom CLI Options
 
-```
+```bash
 pytest --help
+```
+
+## Sort imports
+
+```bash
+isort .
+```
+
+## format code
+
+```bash
+black .
 ```
