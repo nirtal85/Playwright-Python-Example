@@ -25,31 +25,43 @@ def browser_context_args(browser_context_args):
         "viewport": {
             "width": 1920,
             "height": 1080,
-        }
+        },
     }
 
 
 @pytest.fixture(scope="function")
 # Instantiates Page Objects
 def elements(page):
-    return dict(user_name_field=page.locator("[data-test='username']"),
-                password_field=page.locator("[data-test='password']"),
-                login_button=page.locator("[data-test='login-button']"),
-                error_message=page.locator("[data-test='error']"))
+    return dict(
+        user_name_field=page.locator("[data-test='username']"),
+        password_field=page.locator("[data-test='password']"),
+        login_button=page.locator("[data-test='login-button']"),
+        error_message=page.locator("[data-test='error']"),
+    )
 
 
 @pytest.fixture(autouse=True)
 # Performs tear down pages
 def attach_playwright_results(page, request):
     response_list = []
-    page.on("response",
-            lambda response: response_list.extend([response.all_headers(), response.status]))
+    page.on(
+        "response",
+        lambda response: response_list.extend(
+            [response.all_headers(), response.status]
+        ),
+    )
     yield
-    allure.attach(json.dumps(response_list), name="Response",
-                  attachment_type=allure.attachment_type.JSON)
+    allure.attach(
+        json.dumps(response_list),
+        name="Response",
+        attachment_type=allure.attachment_type.JSON,
+    )
     if request.node.rep_call.failed:
-        allure.attach(page.screenshot(full_page=True), name="Screen shot on failure",
-                      attachment_type=allure.attachment_type.PNG)
+        allure.attach(
+            page.screenshot(full_page=True),
+            name="Screen shot on failure",
+            attachment_type=allure.attachment_type.PNG,
+        )
 
 
 @pytest.hookimpl(tryfirst=True, hookwrapper=True)
