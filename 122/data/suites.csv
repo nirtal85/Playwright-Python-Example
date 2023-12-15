@@ -1,4 +1,0 @@
-"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"broken","Thu Dec 14 00:46:35 GMT 2023","Thu Dec 14 00:46:35 GMT 2023","0","tests","test_login","TestLogin","","","test_valid_login[chromium]",""
-"broken","Thu Dec 14 00:46:35 GMT 2023","Thu Dec 14 00:46:35 GMT 2023","0","tests","test_login","TestLogin","","","test_locked_out_user[chromium]",""
-"broken","Thu Dec 14 00:46:35 GMT 2023","Thu Dec 14 00:46:35 GMT 2023","0","tests","test_login","TestLogin","","","test_invalid_login[chromium]",""
