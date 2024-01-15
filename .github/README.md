@@ -1,4 +1,4 @@
-# Selenium Python Example
+# Playwright Python Example
 
 ![Python application](https://github.com/nirtal85/Selenium-Python-Example/workflows/Python%20application/badge.svg)
 
