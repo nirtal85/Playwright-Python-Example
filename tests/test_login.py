@@ -29,6 +29,7 @@ class TestLogin:
             f" but got {self.login_page.get_error_message_text()} instead "
         )
 
+    @pytest.mark.devRun
     def test_locked_out_user(self, page: Page):
         self.login_page.login("locked_out_user", "secret_sauce")
         assert self.login_page.get_error_message_text() == ex_locked_out_user_message, (
