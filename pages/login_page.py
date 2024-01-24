@@ -8,7 +8,6 @@ from playwright.sync_api import Page
 @allure.story("Login page behavior")
 @dataclass
 class LoginPage:
-
     def __init__(self, page: Page):
         self.page = page
         self.user_name_field = page.locator("[data-test='username']")
