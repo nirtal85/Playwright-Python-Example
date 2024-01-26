@@ -49,6 +49,11 @@ def attach_playwright_results(page: Page, request):
             attachment_type=allure.attachment_type.JSON,
         )
         allure.attach(
+            body=page.url,
+            name="URL",
+            attachment_type=allure.attachment_type.URI_LIST,
+        )
+        allure.attach(
             page.screenshot(full_page=True),
             name="Screen shot on failure",
             attachment_type=allure.attachment_type.PNG,
