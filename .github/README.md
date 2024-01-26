@@ -61,7 +61,7 @@ pytest
 allure serve allure-results
 ```
 
-* [View allure results via Github pages](https://nirtal85.github.io/Selenium-Python-Example/)
+* [View allure results via Github pages](https://nirtal85.github.io/Playwright-Python-Example/)
 
 ## View Help And Custom CLI Options
 
