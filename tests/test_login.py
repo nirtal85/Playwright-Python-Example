@@ -19,7 +19,7 @@ class TestLogin:
     def test_valid_login(self, page: Page):
         self.login_page.login("standard_user", "secret_sauce")
         assert (
-                page.url == ex_url
+            page.url == ex_url
         ), f"Expected url to be {ex_url} after a valid login, but got {page.url} instead"
 
     def test_invalid_login(self, page: Page):
