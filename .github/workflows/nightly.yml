@@ -35,8 +35,8 @@ jobs:
         with:
           packages: xvfb fluxbox
           version: 1.0
-      - name: Install playwright chromium
-        run: npx playwright install-deps chromium
+      - name: install playwright browsers
+        run: npx playwright install --with-deps
       - name: Test with pytest
         run: |
           source .venv/bin/activate
