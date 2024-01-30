@@ -79,3 +79,8 @@ jobs:
           PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PUBLISH_BRANCH: gh-pages
           PUBLISH_DIR: allure-history
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: playwright-traces
+          path: test-results/

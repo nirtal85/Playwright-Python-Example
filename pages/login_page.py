@@ -20,7 +20,3 @@ class LoginPage:
         self.user_name_field.type(username)
         self.password_field.type(password)
         self.login_button.click()
-
-    @allure.step("Get error message")
-    def get_error_message_text(self):
-        return self.error_message.text_content()
