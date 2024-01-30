@@ -1,5 +1,5 @@
 import pytest
-from playwright.sync_api import Page
+from playwright.sync_api import Page, expect
 
 from pages.login_page import LoginPage
 
@@ -18,21 +18,13 @@ class TestLogin:
 
     def test_valid_login(self, page: Page):
         self.login_page.login("standard_user", "secret_sauce")
-        assert (
-            page.url == ex_url
-        ), f"Expected url to be {ex_url} after a valid login, but got {page.url} instead"
+        expect(page).to_have_url(ex_url)
 
     def test_invalid_login(self, page: Page):
         self.login_page.login("standard_user", "secret_sauce1")
-        assert self.login_page.get_error_message_text() == ex_error_message, (
-            f"Expected invalid login error message to be {ex_error_message},"
-            f" but got {self.login_page.get_error_message_text()} instead "
-        )
+        expect(self.login_page.error_message).to_have_text(ex_error_message)
 
     @pytest.mark.devRun
     def test_locked_out_user(self, page: Page):
         self.login_page.login("locked_out_user", "secret_sauce")
-        assert self.login_page.get_error_message_text() == ex_locked_out_user_message, (
-            f"Expected locked out user message to be {ex_locked_out_user_message}, "
-            f"but got {self.login_page.get_error_message_text()} instead"
-        )
+        expect(self.login_page.error_message).to_have_text(ex_locked_out_user_message)
