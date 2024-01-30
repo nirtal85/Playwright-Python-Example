@@ -1,6 +1,6 @@
 # Playwright Python Example
 
-![Python application](https://github.com/nirtal85/Selenium-Python-Example/workflows/Python%20application/badge.svg)
+![Pre merge test](https://github.com/nirtal85/Playwright-Python-Example/actions/workflows/devRun.yml/badge.svg)
 
 ## Articles written about this project
 
