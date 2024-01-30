@@ -17,9 +17,12 @@ class TestLogin:
     def test_invalid_login(self, page: Page):
         self.login_page.login("standard_user", "secret_sauce1")
         expect(self.login_page.error_message).to_have_text(
-            "Epic sadface: Username and password do not match any user in this service")
+            "Epic sadface: Username and password do not match any user in this service"
+        )
 
     @pytest.mark.devRun
     def test_locked_out_user(self, page: Page):
         self.login_page.login("locked_out_user", "secret_sauce")
-        expect(self.login_page.error_message).to_have_text("Epic sadface: Sorry, this user has been locked out.")
+        expect(self.login_page.error_message).to_have_text(
+            "Epic sadface: Sorry, this user has been locked out."
+        )
