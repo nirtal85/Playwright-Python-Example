@@ -27,6 +27,7 @@ addopts = [
     "--color=yes",
     "--headed",
     "--video=retain-on-failure",
+    "--tracing=retain-on-failure"
 ]
 
 [tool.poetry.dependencies]
