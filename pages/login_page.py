@@ -16,7 +16,7 @@ class LoginPage:
         self.error_message = page.locator("[data-test='error']")
 
     @allure.step("Login with username {username} and password {password}")
-    def login(self, username, password):
+    def login(self, username: str, password: str):
         self.user_name_field.type(username)
         self.password_field.type(password)
         self.login_button.click()
