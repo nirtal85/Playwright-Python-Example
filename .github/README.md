@@ -4,6 +4,8 @@
 
 ## Articles written about this project
 
+* [Test Automation - How To Use Custom User Agent in Selenium Python or Playwright Python to Avoid Security Bots](https://www.linkedin.com/pulse/test-automation-how-use-custom-user-agent-selenium-python-nir-tal-lyqbf/)
+
 ## Project Setup
 
 * [Install scoop](https://scoop.sh/)
