@@ -2,9 +2,11 @@ import json
 
 import allure
 import pytest
+import requests
 from playwright.sync_api import Page
 
 from utils.config_parser import ConfigParserIni
+from utils.constants import Constants
 
 
 @pytest.fixture(scope="session")
@@ -27,7 +29,16 @@ def browser_context_args(browser_context_args):
             "width": 1920,
             "height": 1080,
         },
+        "user_agent": Constants.AUTOMATION_USER_AGENT,
     }
+
+
+def get_public_ip() -> str:
+    return requests.get(
+        "http://checkip.amazonaws.com",
+        timeout=40,
+        headers={"User-Agent": Constants.AUTOMATION_USER_AGENT},
+    ).text.rstrip()
 
 
 @pytest.fixture(autouse=True)
@@ -57,6 +68,11 @@ def attach_playwright_results(page: Page, request):
             page.screenshot(full_page=True),
             name="Screen shot on failure",
             attachment_type=allure.attachment_type.PNG,
+        )
+        allure.attach(
+            body=get_public_ip(),
+            name="public ip address",
+            attachment_type=allure.attachment_type.TEXT,
         )
 
 
