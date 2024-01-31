@@ -29,7 +29,7 @@ def browser_context_args(browser_context_args):
             "width": 1920,
             "height": 1080,
         },
-        "user_agent": Constants.AUTOMATION_USER_AGENT
+        "user_agent": Constants.AUTOMATION_USER_AGENT,
     }
 
 
@@ -72,7 +72,8 @@ def attach_playwright_results(page: Page, request):
         allure.attach(
             body=get_public_ip(),
             name="public ip address",
-            attachment_type=allure.attachment_type.TEXT)
+            attachment_type=allure.attachment_type.TEXT,
+        )
 
 
 @pytest.hookimpl(tryfirst=True, hookwrapper=True)
