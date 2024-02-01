@@ -39,7 +39,7 @@ pytest = "7.4.4"
 requests = "2.31.0"
 playwright = "1.41.0"
 pytest-playwright = "0.4.3"
-pytest-base-url = "^2.0.0"
+pytest-base-url = "^2.1.0"
 nursery = "^0.0.1a1"
 trio = "^0.24.0"
 
