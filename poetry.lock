@@ -647,18 +647,21 @@ testing = ["argcomplete", "attrs (>=19.2.0)", "hypothesis (>=3.56)", "mock", "no
 
 [[package]]
 name = "pytest-base-url"
-version = "2.0.0"
+version = "2.1.0"
 description = "pytest plugin for URL based testing"
 optional = false
-python-versions = ">=3.7,<4.0"
+python-versions = ">=3.8"
 files = [
-    {file = "pytest-base-url-2.0.0.tar.gz", hash = "sha256:e1e88a4fd221941572ccdcf3bf6c051392d2f8b6cef3e0bc7da95abec4b5346e"},
-    {file = "pytest_base_url-2.0.0-py3-none-any.whl", hash = "sha256:ed36fd632c32af9f1c08f2c2835dcf42ca8fcd097d6ed44a09f253d365ad8297"},
+    {file = "pytest_base_url-2.1.0-py3-none-any.whl", hash = "sha256:3ad15611778764d451927b2a53240c1a7a591b521ea44cebfe45849d2d2812e6"},
+    {file = "pytest_base_url-2.1.0.tar.gz", hash = "sha256:02748589a54f9e63fcbe62301d6b0496da0d10231b753e950c63e03aee745d45"},
 ]
 
 [package.dependencies]
-pytest = ">=3.0.0,<8.0.0"
+pytest = ">=7.0.0"
 requests = ">=2.9"
+
+[package.extras]
+test = ["black (>=22.1.0)", "flake8 (>=4.0.1)", "pre-commit (>=2.17.0)", "pytest-localserver (>=0.7.1)", "tox (>=3.24.5)"]
 
 [[package]]
 name = "pytest-playwright"
@@ -893,4 +896,4 @@ test = ["covdefaults (>=2.3)", "coverage (>=7.2.7)", "coverage-enable-subprocess
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "06c532aba9ce63e97078e377667a176374efab7ff0269c695c5403cafc61fcf4"
+content-hash = "07316a29c97b064e902b61052da0a8f397338285272a23ff25310c71e7713a86"
