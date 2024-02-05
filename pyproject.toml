@@ -11,7 +11,7 @@ skip = ["env", "venv"]
 profile = "black"
 
 [tool.poetry.group.dev.dependencies]
-black = "^23.7.0"
+black = "^24.1.1"
 isort = "5.13.2"
 pre-commit = "^3.6.0"
 
