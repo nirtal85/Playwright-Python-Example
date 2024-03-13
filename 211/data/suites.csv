@@ -1,3 +1,0 @@
-"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Tue Mar 12 00:44:16 GMT 2024","Tue Mar 12 00:44:16 GMT 2024","448","tests","login_test","TestLogin","","","test_login_error[chromium-invalid_password]",""
-"passed","Tue Mar 12 00:44:16 GMT 2024","Tue Mar 12 00:44:17 GMT 2024","259","tests","login_test","TestLogin","","","test_login_error[chromium-locked_user]",""
