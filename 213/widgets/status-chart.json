@@ -1,0 +1,1 @@
+[{"uid":"a6231afe2193b3a9","name":"test_login_error[chromium-invalid_password]","time":{"start":1710377055784,"stop":1710377056179,"duration":395},"status":"passed","severity":"normal"},{"uid":"e95a0eddf40f90e8","name":"test_login_error[chromium-locked_user]","time":{"start":1710377056577,"stop":1710377056844,"duration":267},"status":"passed","severity":"normal"}]
