@@ -5,14 +5,7 @@ import pytest
 import requests
 from playwright.sync_api import Page
 
-from utils.config_parser import ConfigParserIni
-from utils.constants import Constants
-
-
-@pytest.fixture(scope="session")
-# instantiates ini file parses object
-def prep_properties():
-    return ConfigParserIni("props.ini")
+from utilities.constants import Constants
 
 
 @pytest.fixture(scope="function", autouse=True)
