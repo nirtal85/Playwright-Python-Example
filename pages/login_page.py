@@ -17,6 +17,6 @@ class LoginPage:
 
     @allure.step("Login with username {username} and password {password}")
     def login(self, username: str, password: str):
-        self.user_name_field.type(username)
-        self.password_field.type(password)
+        self.user_name_field.fill(username)
+        self.password_field.fill(password)
         self.login_button.click()
