@@ -17,6 +17,7 @@
 | [pytest-base-url](https://pypi.org/project/pytest-base-url/)     | Pytest plugin for setting a base URL for your tests                                            |
 | [pytest-playwright](https://pypi.org/project/pytest-playwright/) | Pytest plugin for Playwright integration for browser automation testing                        |
 | [requests](https://pypi.org/project/requests/)                   | A versatile library for making HTTP requests in Python                                         |
+
 ## Setup Instructions
 
 ### Step 1: Clone the project
