@@ -35,6 +35,7 @@ def get_public_ip() -> str:
 @pytest.fixture(autouse=True)
 # Performs tear down pages
 def attach_playwright_results(page: Page, request):
+    yield
     if request.node.rep_call.failed:
         allure.attach(
             body=page.url,
