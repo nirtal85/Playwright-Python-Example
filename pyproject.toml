@@ -1,14 +1,30 @@
-[tool.poetry]
-name = "playwright-python"
-version = "0.1.0"
-description = ""
-authors = ["nirtal85 <nirt236@gmail.com>"]
-readme = "README.md"
-packages = [{include = "playwright_python"}]
+[build-system]
+build-backend = "poetry.core.masonry.api"
+requires = ["poetry-core"]
 
 [tool.isort]
-skip = ["env", "venv"]
 profile = "black"
+skip = ["env", "venv"]
+
+[tool.poetry]
+authors = ["nirtal85 <nirt236@gmail.com>"]
+description = ""
+name = "playwright-python"
+packages = [{include = "playwright_python"}]
+readme = "README.md"
+version = "0.1.0"
+
+[tool.poetry.dependencies]
+allure-pytest = "2.13.2"
+allure-python-commons = "2.13.2"
+nursery = "^0.0.1a1"
+playwright = "1.41.1"
+pytest = "7.4.4"
+pytest-base-url = "^2.1.0"
+pytest-playwright = "0.4.3"
+python = "^3.11"
+requests = "2.31.0"
+trio = "^0.24.0"
 
 [tool.poetry.group.dev.dependencies]
 black = "^24.1.1"
@@ -16,33 +32,24 @@ isort = "5.13.2"
 pre-commit = "^3.6.0"
 
 [tool.pytest.ini_options]
-log_cli = true
-log_cli_level = "INFO"
-log_cli_format = "%(asctime)s [%(levelname)8s] %(message)s (%(filename)s:%(lineno)s)"
-log_cli_date_format = "%Y-%m-%d %H:%M:%S"
-base_url = 'https://www.saucedemo.com/'
 addopts = [
-    "--alluredir=allure-results",
-    "-ra",
-    "--color=yes",
-    "--browser-channel=chrome",
-    "--headed",
-    "--video=retain-on-failure",
-    "--tracing=retain-on-failure"
+  "--clean-alluredir",
+  "--alluredir=allure-results",
+  "--allure-link-pattern",
+  "issue:https://{}",
+  "--allure-link-pattern",
+  "link:https://{}",
+  "--allure-link-pattern",
+  "tms:https://{}",
+  "-ra",
+  "--color=yes",
+  "--browser-channel=chrome",
+  "--headed",
+  "--video=retain-on-failure",
+  "--tracing=retain-on-failure"
 ]
-
-[tool.poetry.dependencies]
-python = "^3.11"
-allure-pytest = "2.13.2"
-allure-python-commons = "2.13.2"
-pytest = "7.4.4"
-requests = "2.31.0"
-playwright = "1.41.1"
-pytest-playwright = "0.4.3"
-pytest-base-url = "^2.1.0"
-nursery = "^0.0.1a1"
-trio = "^0.24.0"
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+base_url = 'https://www.saucedemo.com/'
+log_cli = true
+log_cli_date_format = "%Y-%m-%d %H:%M:%S"
+log_cli_format = "%(asctime)s [%(levelname)8s] %(message)s (%(filename)s:%(lineno)s)"
+log_cli_level = "INFO"
