@@ -14,6 +14,7 @@ class TestLogin:
     def test_valid_login(self, base_url, page: Page):
         self.login_page.login("standard_user", "secret_sauce")
         expect(page).to_have_url(f"{base_url}inventory.html")
+        assert False
 
     @pytest.mark.parametrize(
         "username, password, expected_error",

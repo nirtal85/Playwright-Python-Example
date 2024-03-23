@@ -8,10 +8,13 @@ skip = ["env", "venv"]
 
 [tool.poetry]
 authors = ["nirtal85 <nirt236@gmail.com>"]
-description = ""
+description = "Playwright Python example project with pytest and Allure report"
+keywords = ["playwright", "automation", "testing", "web"]
+license = "MIT"
 name = "playwright-python"
 packages = [{include = "playwright_python"}]
 readme = "README.md"
+repository = "https://github.com/nirtal85/Playwright-Python-Example"
 version = "0.1.0"
 
 [tool.poetry.dependencies]
