@@ -8,7 +8,8 @@ skip = ["env", "venv"]
 
 [tool.poetry]
 authors = ["nirtal85 <nirt236@gmail.com>"]
-description = ""
+description = "Playwright Python example project with pytest and Allure report"
+keywords = ["playwright", "automation", "testing", "web"]
 name = "playwright-python"
 packages = [{include = "playwright_python"}]
 readme = "README.md"
