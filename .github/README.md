@@ -108,6 +108,12 @@ allure serve allure-results
 
 [View allure results via Github pages](https://nirtal85.github.io/Playwright-Python-Example/)
 
+### View trace results:
+
+1. Navigate to the [Playwright Trace Viewer](https://trace.playwright.dev/)
+2. Locate the trace file stored under the test-results folder. This file is generated after running your tests. Click on the 'Upload' button in the Playwright Trace Viewer and select your trace file.
+3. After uploading, the trace viewer will display a detailed timeline of events that occurred during your test. This includes network requests, JavaScript execution, and browser interactions. You can click on individual events for more details.
+
 ## View Help And Other CLI Options
 
 ```bash

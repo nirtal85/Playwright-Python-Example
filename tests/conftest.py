@@ -1,5 +1,3 @@
-import json
-
 import allure
 import pytest
 import requests
@@ -37,21 +35,7 @@ def get_public_ip() -> str:
 @pytest.fixture(autouse=True)
 # Performs tear down pages
 def attach_playwright_results(page: Page, request):
-    response_list = []
-    page.on(
-        "response",
-        lambda response: response_list.extend(
-            [response.all_headers(), response.status, response.url]
-        ),
-    )
-    yield
-
     if request.node.rep_call.failed:
-        allure.attach(
-            json.dumps(response_list, indent=4),
-            name="Response",
-            attachment_type=allure.attachment_type.JSON,
-        )
         allure.attach(
             body=page.url,
             name="URL",
@@ -76,4 +60,4 @@ def pytest_runtest_makereport(item):
     rep = outcome.get_result()
     # set a report attribute for each phase of a call, which can
     # be "setup", "call", "teardown"
-    setattr(item, "rep_" + rep.when, rep)
+    setattr(item, f"rep_{rep.when}", rep)
