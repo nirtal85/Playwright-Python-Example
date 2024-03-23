@@ -1,6 +1,10 @@
 # Playwright Python Example
 
-![Pre merge test](https://github.com/nirtal85/Playwright-Python-Example/actions/workflows/devRun.yml/badge.svg)
+![twitter](https://img.shields.io/twitter/follow/NirTal2)
+![dev run](https://github.com/nirtal85/Playwright-Python-Example/actions/workflows/devRun.yml/badge.svg)
+![nightly](https://github.com/nirtal85/Playwright-Python-Example/actions/workflows/nightly.yml/badge.svg)
+[![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://pycqa.github.io/isort/)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 ## Articles written about this project
 
@@ -9,14 +13,14 @@
 
 ## Tech Stack
 
-| Tool                                                             | Description                                                                                    |
-|------------------------------------------------------------------|------------------------------------------------------------------------------------------------|
-| [allure-pytest](https://pypi.org/project/allure-pytest/)         | Allure reporting with your Pytest tests for better reporting                                   |
-| [playwright](https://pypi.org/project/playwright/)               | A Node.js library to automate the Chromium, WebKit, and Firefox browsers through a single API. |
-| [pytest](https://pypi.org/project/pytest/)                       | A popular testing framework for Python                                                         |
-| [pytest-base-url](https://pypi.org/project/pytest-base-url/)     | Pytest plugin for setting a base URL for your tests                                            |
-| [pytest-playwright](https://pypi.org/project/pytest-playwright/) | Pytest plugin for Playwright integration for browser automation testing                        |
-| [requests](https://pypi.org/project/requests/)                   | A versatile library for making HTTP requests in Python                                         |
+| Tool                                                             | Description                                                                                   |
+|------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|
+| [allure-pytest](https://pypi.org/project/allure-pytest/)         | Allure reporting with your Pytest tests for better reporting                                  |
+| [playwright](https://pypi.org/project/playwright/)               | A Python library to automate the Chromium, WebKit, and Firefox browsers through a single API. |
+| [pytest](https://pypi.org/project/pytest/)                       | A popular testing framework for Python                                                        |
+| [pytest-base-url](https://pypi.org/project/pytest-base-url/)     | Pytest plugin for setting a base URL for your tests                                           |
+| [pytest-playwright](https://pypi.org/project/pytest-playwright/) | Pytest plugin for Playwright integration for browser automation testing                       |
+| [requests](https://pypi.org/project/requests/)                   | A versatile library for making HTTP requests in Python                                        |
 
 ## Setup Instructions
 
