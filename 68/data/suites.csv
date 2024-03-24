@@ -1,2 +1,0 @@
-"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Sun Mar 24 08:08:00 GMT 2024","Sun Mar 24 08:08:01 GMT 2024","312","tests","login_test","TestLogin","","","test_valid_login[chromium]",""
