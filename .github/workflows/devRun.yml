@@ -12,6 +12,8 @@ on:
 jobs:
   merge_test:
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright/python:v1.42.0-jammy
     steps:
       - uses: actions/checkout@v4
       - uses: psf/black@stable
@@ -39,8 +41,6 @@ jobs:
         with:
           packages: xvfb fluxbox
           version: 1.0
-      - name: install playwright browsers
-        run: npx playwright install --with-deps
       - name: Test with pytest
         run: |
           source .venv/bin/activate
