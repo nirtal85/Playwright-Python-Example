@@ -1,19 +1,35 @@
+from typing import Dict
+
 import allure
 import pytest
 import requests
+from _pytest.fixtures import FixtureRequest
+from _pytest.nodes import Item
 from playwright.sync_api import Page
 
 from utilities.constants import Constants
 
 
 @pytest.fixture(scope="function", autouse=True)
-# navigate to base URL
 def goto(page: Page):
+    """Fixture to navigate to the base URL.
+
+    Args:
+        page (Page): Playwright page object.
+    """
     page.goto("")
 
 
 @pytest.fixture(scope="session")
-def browser_context_args(browser_context_args):
+def browser_context_args(browser_context_args: Dict):
+    """Fixture to set browser context arguments.
+
+    Args:
+        browser_context_args (dict): Browser context arguments.
+
+    Returns:
+        dict: Updated browser context arguments.
+    """
     return {
         **browser_context_args,
         "viewport": {
@@ -25,6 +41,11 @@ def browser_context_args(browser_context_args):
 
 
 def get_public_ip() -> str:
+    """Function to retrieve public IP address.
+
+    Returns:
+        str: Public IP address.
+    """
     return requests.get(
         "http://checkip.amazonaws.com",
         timeout=40,
@@ -33,8 +54,14 @@ def get_public_ip() -> str:
 
 
 @pytest.fixture(autouse=True)
-# Performs tear down pages
-def attach_playwright_results(page: Page, request):
+def attach_playwright_results(page: Page, request: FixtureRequest):
+    """Fixture to perform teardown actions and attach results to Allure report
+    on failure.
+
+    Args:
+        page (Page): Playwright page object.
+        request: Pytest request object.
+    """
     yield
     if request.node.rep_call.failed:
         allure.attach(
@@ -55,10 +82,15 @@ def attach_playwright_results(page: Page, request):
 
 
 @pytest.hookimpl(tryfirst=True, hookwrapper=True)
-def pytest_runtest_makereport(item):
-    # execute all other hooks to obtain the report object
+def pytest_runtest_makereport(item: Item):
+    """Hook implementation to generate test report for each test phase.
+
+    Args:
+        item: Pytest item object.
+
+    Yields:
+        Outcome of the test execution.
+    """
     outcome = yield
     rep = outcome.get_result()
-    # set a report attribute for each phase of a call, which can
-    # be "setup", "call", "teardown"
     setattr(item, f"rep_{rep.when}", rep)
