@@ -22,7 +22,9 @@ def goto(page: Page):
 
 @pytest.fixture(scope="session")
 def browser_context_args(browser_context_args: Dict):
-    """Fixture to set browser context arguments.
+    """
+    Fixture to set browser context arguments.
+    See: https://playwright.dev/python/docs/api/class-browser#browser-new-context
 
     Args:
         browser_context_args (dict): Browser context arguments.
@@ -32,12 +34,24 @@ def browser_context_args(browser_context_args: Dict):
     """
     return {
         **browser_context_args,
-        "viewport": {
-            "width": 1920,
-            "height": 1080,
-        },
+        "no_viewport": True,
         "user_agent": Constants.AUTOMATION_USER_AGENT,
     }
+
+
+@pytest.fixture(scope="session")
+def browser_type_launch_args(browser_type_launch_args: Dict):
+    """
+    Fixture to set browser launch arguments.
+    See: https://playwright.dev/python/docs/api/class-browsertype#browser-type-launch
+
+    Args:
+        browser_type_launch_args (dict): Browser type launch arguments.
+
+    Returns:
+        dict: Updated browser type launch arguments.
+    """
+    return {**browser_type_launch_args, "args": ["--start-maximized"]}
 
 
 def get_public_ip() -> str:
