@@ -1,0 +1,3 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Fri Mar 29 00:44:49 GMT 2024","Fri Mar 29 00:44:49 GMT 2024","174","tests","login_test","TestLogin","","","Login with invalid credentials test",""
+"passed","Fri Mar 29 00:44:48 GMT 2024","Fri Mar 29 00:44:49 GMT 2024","298","tests","login_test","TestLogin","","","Login with invalid credentials test",""
