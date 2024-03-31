@@ -36,6 +36,15 @@ def browser_context_args(browser_context_args: Dict):
         **browser_context_args,
         "no_viewport": True,
         "user_agent": Constants.AUTOMATION_USER_AGENT,
+        "storage_state": {
+            "cookies": [
+                {
+                    "name": "session-username",
+                    "value": "standard_user",
+                    "url": "https://www.saucedemo.com",
+                },
+            ]
+        },
     }
 
 
