@@ -27,7 +27,7 @@ requests = "2.31.0"
 [tool.poetry.group.dev.dependencies]
 black = "^24.2.0"
 isort = "5.13.2"
-pre-commit = "^3.6.2"
+pre-commit = "^3.7.0"
 
 [tool.pytest.ini_options]
 addopts = [
