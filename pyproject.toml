@@ -17,7 +17,7 @@ version = "0.1.0"
 
 [tool.poetry.dependencies]
 allure-pytest = "2.13.2"
-playwright = "1.41.2"
+playwright = "1.42.0"
 pytest = "7.4.4"
 pytest-base-url = "^2.1.0"
 pytest-playwright = "0.4.4"
