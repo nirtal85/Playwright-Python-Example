@@ -3,7 +3,7 @@ from typing import Dict
 import allure
 import pytest
 import requests
-from _pytest.fixtures import FixtureRequest
+from _pytest.fixtures import FixtureRequest, SubRequest
 from _pytest.nodes import Item
 from playwright.sync_api import Page
 
@@ -11,54 +11,75 @@ from utilities.constants import Constants
 
 
 @pytest.fixture(scope="function", autouse=True)
-def goto(page: Page):
-    """Fixture to navigate to the base URL.
+def goto(page: Page, request: SubRequest):
+    """Fixture to navigate to the base URL based on the user.
+
+    If the 'storage_state' is set in 'browser_context_args', it navigates to the inventory page,
+    otherwise, it navigates to the login page.
 
     Args:
         page (Page): Playwright page object.
+        request (SubRequest): Pytest request object to get the 'browser_context_args' fixture value.
+            If 'browser_context_args' is set to a user parameter (e.g., 'standard_user'),
+            the navigation is determined based on the user.
+
+    Example:
+        @pytest.mark.parametrize('browser_context_args', ["standard_user"], indirect=True)
     """
-    page.goto("")
+    if request.getfixturevalue("browser_context_args").get("storage_state"):
+        page.goto("/inventory.html")
+    else:
+        page.goto("")
 
 
-@pytest.fixture(scope="session")
-def browser_context_args(browser_context_args: Dict):
-    """
-    Fixture to set browser context arguments.
-    See: https://playwright.dev/python/docs/api/class-browser#browser-new-context
+@pytest.fixture(scope="function")
+def browser_context_args(
+    browser_context_args: Dict, base_url: str, request: SubRequest
+):
+    """This fixture allows setting browser context arguments for Playwright.
 
     Args:
-        browser_context_args (dict): Browser context arguments.
+        browser_context_args (dict): Base browser context arguments.
+        request (SubRequest): Pytest request object to get the 'browser_context_args' fixture value.
+        base_url (str): The base URL for the application under test.
+    Returns:
+        dict: Updated browser context arguments.
+    See Also:
+        https://playwright.dev/python/docs/api/class-browser#browser-new-contex
 
     Returns:
         dict: Updated browser context arguments.
     """
-    return {
+    context_args = {
         **browser_context_args,
         "no_viewport": True,
         "user_agent": Constants.AUTOMATION_USER_AGENT,
-        "storage_state": {
+    }
+
+    if hasattr(request, "param"):
+        context_args["storage_state"] = {
             "cookies": [
                 {
                     "name": "session-username",
-                    "value": "standard_user",
-                    "url": "https://www.saucedemo.com",
-                },
+                    "value": request.param,
+                    "url": base_url,
+                }
             ]
-        },
-    }
+        }
+    return context_args
 
 
 @pytest.fixture(scope="session")
 def browser_type_launch_args(browser_type_launch_args: Dict):
-    """
-    Fixture to set browser launch arguments.
-    See: https://playwright.dev/python/docs/api/class-browsertype#browser-type-launch
+    """Fixture to set browser launch arguments.
 
     Args:
         browser_type_launch_args (dict): Browser type launch arguments.
 
     Returns:
         dict: Updated browser type launch arguments.
+    See Also:
+        https://playwright.dev/python/docs/api/class-browsertype#browser-type-launch
     """
     return {**browser_type_launch_args, "args": ["--start-maximized"]}
 
