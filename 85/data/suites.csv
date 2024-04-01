@@ -1,0 +1,2 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Mon Apr 01 15:10:03 GMT 2024","Mon Apr 01 15:10:04 GMT 2024","865","tests","login_test","TestLogin","","","Login with valid credentials test",""
