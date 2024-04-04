@@ -11,6 +11,7 @@
 * [Test Automation - How To Use Custom User Agent in Selenium Python or Playwright Python to Avoid Security Bots](https://www.linkedin.com/pulse/test-automation-how-use-custom-user-agent-selenium-python-nir-tal-lyqbf/)
 * [Test Automation - How to Use Dynamic Base URLs with Selenium And Playwright Python in GitHub Actions](https://www.linkedin.com/pulse/test-automation-how-use-dynamic-base-urls-selenium-playwright-tal-klq5f/)
 * [Test Automation - Maximizing Browser Window With Playwright Python And Pytest](https://www.linkedin.com/pulse/test-automation-maximizing-browser-window-playwright-nir-tal-c24hf/)
+* [Test Automation - How to Bypass Re-Login With Playwright Python And Pytest](https://www.linkedin.com/pulse/test-automation-how-bypass-re-login-playwright-python-nir-tal-cfnnf/)
 
 ## Tech Stack
 
