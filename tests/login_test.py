@@ -10,6 +10,10 @@ class TestLogin:
     def setup(self, page: Page):
         self.login_page = LoginPage(page)
 
+    @pytest.mark.parametrize("browser_context_args", ["standard_user"], indirect=True)
+    def test_inventory_page(self, browser_context_args, page: Page):
+        assert page.inner_text("//span[@class='title']") == "Products"
+
     @pytest.mark.devRun
     @allure.title("Login with valid credentials test")
     def test_valid_login(self, base_url, page: Page):
