@@ -1,4 +1,4 @@
-# Playwright Python Example
+# 🎭 Playwright Python Example 🎭
 
 ![twitter](https://img.shields.io/twitter/follow/NirTal2)
 ![dev run](https://github.com/nirtal85/Playwright-Python-Example/actions/workflows/devRun.yml/badge.svg)
@@ -6,14 +6,14 @@
 [![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://pycqa.github.io/isort/)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-## Articles written about this project
+## 📃 Articles written about this project
 
 * [Test Automation - How To Use Custom User Agent in Selenium Python or Playwright Python to Avoid Security Bots](https://www.linkedin.com/pulse/test-automation-how-use-custom-user-agent-selenium-python-nir-tal-lyqbf/)
 * [Test Automation - How to Use Dynamic Base URLs with Selenium And Playwright Python in GitHub Actions](https://www.linkedin.com/pulse/test-automation-how-use-dynamic-base-urls-selenium-playwright-tal-klq5f/)
 * [Test Automation - Maximizing Browser Window With Playwright Python And Pytest](https://www.linkedin.com/pulse/test-automation-maximizing-browser-window-playwright-nir-tal-c24hf/)
 * [Test Automation - How to Bypass Re-Login With Playwright Python And Pytest](https://www.linkedin.com/pulse/test-automation-how-bypass-re-login-playwright-python-nir-tal-cfnnf/)
 
-## Tech Stack
+## 🛠️ Tech Stack
 
 | Tool                                                             | Description                                                                                   |
 |------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|
@@ -24,7 +24,7 @@
 | [pytest-playwright](https://pypi.org/project/pytest-playwright/) | Pytest plugin for Playwright integration for browser automation testing                       |
 | [requests](https://pypi.org/project/requests/)                   | A versatile library for making HTTP requests in Python                                        |
 
-## Setup Instructions
+## ⚙️ Setup Instructions
 
 ### Step 1: Clone the project
 
@@ -67,7 +67,7 @@ poetry install --no-root
 playwright install
 ```
 
-## Running Tests
+## 🏃‍♂️ Running Tests
 
 ```bash
 pytest
@@ -81,7 +81,7 @@ When no browser was selected then chrome will be used.
 pytest -m <tag_name>
 ```
 
-## Viewing Test Results
+## ✅ Viewing Test Results
 
 ### Install Allure Commandline To View Test results
 
@@ -116,7 +116,7 @@ allure serve allure-results
 2. Locate the trace file stored under the test-results folder. This file is generated after running your tests. Click on the 'Upload' button in the Playwright Trace Viewer and select your trace file.
 3. After uploading, the trace viewer will display a detailed timeline of events that occurred during your test. This includes network requests, JavaScript execution, and browser interactions. You can click on individual events for more details.
 
-## View Help And Other CLI Options
+## ❓ View Help And Other CLI Options
 
 ```bash
 pytest --help
