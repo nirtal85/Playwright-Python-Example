@@ -2,6 +2,7 @@ import allure
 import pytest
 from playwright.sync_api import Page, expect
 
+from enums.User import User
 from pages.login_page import LoginPage
 
 
@@ -13,19 +14,19 @@ class TestLogin:
     @pytest.mark.devRun
     @allure.title("Login with valid credentials test")
     def test_valid_login(self, base_url, page: Page):
-        self.login_page.login("standard_user", "secret_sauce")
+        self.login_page.login(User.STANDARD_USER, "secret_sauce")
         expect(page).to_have_url(f"{base_url}inventory.html")
 
     @pytest.mark.parametrize(
         "username, password, expected_error",
         [
             (
-                "standard_user",
+                User.STANDARD_USER,
                 "secret_sauce1",
                 "Epic sadface: Username and password do not match any user in this service",
             ),
             (
-                "locked_out_user",
+                User.LOCKED_OUT_USER,
                 "secret_sauce",
                 "Epic sadface: Sorry, this user has been locked out.",
             ),

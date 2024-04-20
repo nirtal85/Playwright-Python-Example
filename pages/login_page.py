@@ -1,7 +1,10 @@
 from dataclasses import dataclass
+from typing import Union
 
 import allure
 from playwright.sync_api import Page
+
+from enums import User
 
 
 @allure.severity(allure.severity_level.CRITICAL)
@@ -16,7 +19,10 @@ class LoginPage:
         self.error_message = page.locator("[data-test='error']")
 
     @allure.step("Login with username {username} and password {password}")
-    def login(self, username: str, password: str):
-        self.user_name_field.fill(username)
+    def login(self, username: Union[User, str], password: str):
+        if hasattr(username, "value"):
+            self.user_name_field.fill(username.value)
+        else:
+            self.user_name_field.fill(username)
         self.password_field.fill(password)
         self.login_button.click()
