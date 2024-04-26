@@ -1,0 +1,4 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Fri Apr 26 00:46:30 GMT 2024","Fri Apr 26 00:46:30 GMT 2024","160","tests","login_test","TestLogin","","","Login with invalid credentials test",""
+"passed","Fri Apr 26 00:46:30 GMT 2024","Fri Apr 26 00:46:30 GMT 2024","177","tests","login_test","TestLogin","","","Login with invalid credentials test",""
+"passed","Fri Apr 26 00:46:29 GMT 2024","Fri Apr 26 00:46:29 GMT 2024","47","tests","inventory_test","TestInventory","","","test_inventory_page[chromium-User.STANDARD_USER]",""
