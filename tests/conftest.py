@@ -36,6 +36,14 @@ def goto(page: Page, request: SubRequest):
 
 @pytest.fixture(scope="session")
 def axe_playwright():
+    """Fixture to provide an instance of AxeHelper with Axe initialized.
+
+    This fixture has a session scope, meaning it will be created once per test session
+    and shared across all tests.
+
+    Returns:
+        AxeHelper: An instance of AxeHelper with Axe initialized.
+    """
     yield AxeHelper(Axe())
 
 
