@@ -32,19 +32,15 @@ class AxeHelper:
             }
         results = self.axe.run(page)
         violations_by_impact = {"minor": 0, "moderate": 0, "serious": 0, "critical": 0}
-
         for violation in results.response["violations"]:
             impact = violation["impact"]
             violations_by_impact[impact] += 1
-
-        violation_details = json.dumps(results.response["violations"], indent=4)
-
         for impact_level, violation_count in violations_by_impact.items():
             if violation_count > maximum_allowed_violations_by_impact.get(
                 impact_level, 0
             ):
                 allure.attach(
-                    body=violation_details,
+                    body=json.dumps(results.response["violations"], indent=4),
                     name="Accessibility Violation Results",
                     attachment_type=allure.attachment_type.JSON,
                 )
