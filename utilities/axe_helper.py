@@ -1,4 +1,5 @@
 import json
+from collections import Counter
 from typing import Dict
 
 import allure
@@ -13,7 +14,7 @@ class AxeHelper:
 
     def check_accessibility(
         self, page: Page, maximum_allowed_violations_by_impact: Dict[str, int] = None
-    ):
+    ) -> None:
         """Checks accessibility of the page using playwright axe.
 
         :param page: Playwright Page object
@@ -31,23 +32,23 @@ class AxeHelper:
                 "critical": 0,
             }
         results = self.axe.run(page)
-        violations_by_impact = {"minor": 0, "moderate": 0, "serious": 0, "critical": 0}
-        for violation in results.response["violations"]:
-            impact = violation["impact"]
-            violations_by_impact[impact] += 1
-        for impact_level, violation_count in violations_by_impact.items():
-            if violation_count > maximum_allowed_violations_by_impact.get(
-                impact_level, 0
-            ):
-                allure.attach(
-                    body=json.dumps(results.response["violations"], indent=4),
-                    name="Accessibility Violation Results",
-                    attachment_type=allure.attachment_type.JSON,
-                )
-                assert (
-                    violation_count
-                    <= maximum_allowed_violations_by_impact[impact_level]
-                ), (
-                    f"Found {violation_count} {impact_level} accessibility violations, "
-                    f"which exceeds the maximum allowed ({maximum_allowed_violations_by_impact[impact_level]})."
-                )
+        violations_count = dict(
+            Counter(
+                [violation["impact"] for violation in results.response["violations"]]
+            )
+        )
+        if violations_exceeded := {
+            impact_level: violation_count
+            for impact_level, violation_count in violations_count.items()
+            if violation_count
+            > maximum_allowed_violations_by_impact.get(impact_level, 0)
+        }:
+            allure.attach(
+                body=json.dumps(results.response["violations"], indent=4),
+                name="Accessibility Violation Results",
+                attachment_type=allure.attachment_type.JSON,
+            )
+            assert not violations_exceeded, (
+                f"Found accessibility violations exceeding the maximum allowed: "
+                f"{violations_exceeded}"
+            )
