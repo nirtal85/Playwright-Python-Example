@@ -5,8 +5,10 @@ import pytest
 import requests
 from _pytest.fixtures import FixtureRequest, SubRequest
 from _pytest.nodes import Item
+from axe_playwright_python.sync_playwright import Axe
 from playwright.sync_api import Page
 
+from utilities.axe_helper import AxeHelper
 from utilities.constants import Constants
 
 
@@ -30,6 +32,19 @@ def goto(page: Page, request: SubRequest):
         page.goto("/inventory.html")
     else:
         page.goto("")
+
+
+@pytest.fixture(scope="session")
+def axe_playwright():
+    """Fixture to provide an instance of AxeHelper with Axe initialized.
+
+    This fixture has a session scope, meaning it will be created once per test session
+    and shared across all tests.
+
+    Returns:
+        AxeHelper: An instance of AxeHelper with Axe initialized.
+    """
+    yield AxeHelper(Axe())
 
 
 @pytest.fixture(scope="function")

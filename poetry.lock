@@ -50,6 +50,23 @@ tests-mypy = ["mypy (>=1.6)", "pytest-mypy-plugins"]
 tests-no-zope = ["attrs[tests-mypy]", "cloudpickle", "hypothesis", "pympler", "pytest (>=4.3.0)", "pytest-xdist[psutil]"]
 
 [[package]]
+name = "axe-playwright-python"
+version = "0.1.4"
+description = "Automated web accessibility testing using axe-core engine and Playwright."
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "axe_playwright_python-0.1.4-py3-none-any.whl", hash = "sha256:74c0993ac92c2ede522c56bf2cdda42216b22af53c4d94a684767fd42883c7fb"},
+    {file = "axe_playwright_python-0.1.4.tar.gz", hash = "sha256:100f2f4af4525eea231bcc527ac40593805523e1433984e048fde28fea1d488a"},
+]
+
+[package.dependencies]
+playwright = ">=1.36.0"
+
+[package.extras]
+dev = ["black (==23.7.0)", "flit", "mkdocs (==1.4.3)", "mkdocs-material (==9.1.19)", "mkdocstrings (==0.22.0)", "pre-commit (==3.3.3)", "pytest (==7.4.0)", "pytest-asyncio (==0.21.1)", "pytest-cov (==4.1.0)", "pytest-playwright (==0.3.3)", "ruff (==0.0.280)"]
+
+[[package]]
 name = "black"
 version = "24.3.0"
 description = "The uncompromising code formatter."
@@ -749,4 +766,4 @@ test = ["covdefaults (>=2.3)", "coverage (>=7.2.7)", "coverage-enable-subprocess
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "6c4480fdcd633cae34558abfce9e5b30261a2e40f5a0393182f2f2ec3bdddb80"
+content-hash = "93f75c4a8bc08de8bf874cacb77ce8b6f6e6fa78b894546d6a014b6df00027f8"
