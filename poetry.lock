@@ -2,28 +2,28 @@
 
 [[package]]
 name = "allure-pytest"
-version = "2.13.4"
+version = "2.13.5"
 description = "Allure pytest integration"
 optional = false
 python-versions = "*"
 files = [
-    {file = "allure-pytest-2.13.4.tar.gz", hash = "sha256:cc09784987c2d6f6a2a8263f521cb15d4fd50c0649dbc47dbc29b8ea36416a6f"},
-    {file = "allure_pytest-2.13.4-py3-none-any.whl", hash = "sha256:7d3ba5ccd903dea4fc9824191e673cb64a5f67196ac4db135dd53f87419c953c"},
+    {file = "allure-pytest-2.13.5.tar.gz", hash = "sha256:0ef8e1790c44a988db6b83c4d4f5e91451e2c4c8ea10601dfa88528d23afcf6e"},
+    {file = "allure_pytest-2.13.5-py3-none-any.whl", hash = "sha256:94130bac32964b78058e62cf4b815ad97a5ac82a065e6dd2d43abac2be7640fc"},
 ]
 
 [package.dependencies]
-allure-python-commons = "2.13.4"
+allure-python-commons = "2.13.5"
 pytest = ">=4.5.0"
 
 [[package]]
 name = "allure-python-commons"
-version = "2.13.4"
+version = "2.13.5"
 description = "('Contains the API for end users as well as helper functions and classes to build Allure adapters for Python test frameworks',)"
 optional = false
 python-versions = ">=3.6"
 files = [
-    {file = "allure-python-commons-2.13.4.tar.gz", hash = "sha256:a4ace23f236f0ec32eb6ea316914d9e45500ba421fc6d80ed2fba08684e746a1"},
-    {file = "allure_python_commons-2.13.4-py3-none-any.whl", hash = "sha256:e8caca521bea21d045540bd36ce8f3af25ddc9b1ff0c54de4fd6c57fb919cf0e"},
+    {file = "allure-python-commons-2.13.5.tar.gz", hash = "sha256:a232e7955811f988e49a4c1dd6c16cce7e9b81d0ea0422b1e5654d3254e2caf3"},
+    {file = "allure_python_commons-2.13.5-py3-none-any.whl", hash = "sha256:8b0e837b6e32d810adec563f49e1d04127a5b6770e0232065b7cb09b9953980d"},
 ]
 
 [package.dependencies]
@@ -766,4 +766,4 @@ test = ["covdefaults (>=2.3)", "coverage (>=7.2.7)", "coverage-enable-subprocess
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "ee18c65b14b28f6f4bbcf039e979bdb038354c186873a57a50dfe4d0a7b61d12"
+content-hash = "9a9dca01fe79fef64311cee2dbc94edc927a667ad41c9afeac2bf48152616455"
