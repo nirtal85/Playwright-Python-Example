@@ -16,14 +16,15 @@
 
 ## 🛠️ Tech Stack
 
-| Tool                                                             | Description                                                                                   |
-|------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|
-| [allure-pytest](https://pypi.org/project/allure-pytest/)         | Allure reporting with your Pytest tests for better reporting                                  |
-| [playwright](https://pypi.org/project/playwright/)               | A Python library to automate the Chromium, WebKit, and Firefox browsers through a single API. |
-| [pytest](https://pypi.org/project/pytest/)                       | A popular testing framework for Python                                                        |
-| [pytest-base-url](https://pypi.org/project/pytest-base-url/)     | Pytest plugin for setting a base URL for your tests                                           |
-| [pytest-playwright](https://pypi.org/project/pytest-playwright/) | Pytest plugin for Playwright integration for browser automation testing                       |
-| [requests](https://pypi.org/project/requests/)                   | A versatile library for making HTTP requests in Python                                        |
+| Tool                                                                     | Description                                                                                 |
+|--------------------------------------------------------------------------|---------------------------------------------------------------------------------------------|
+| [allure-pytest](https://pypi.org/project/allure-pytest/)                 | Allure reporting with your Pytest tests for better reporting                                |
+| [axe-playwright-python](https://pypi.org/project/axe-playwright-python/) | Python library for running accessibility checks with Playwright                             |
+| [playwright](https://pypi.org/project/playwright/)                       | Python library to automate the Chromium, WebKit, and Firefox browsers through a single API. |
+| [pytest](https://pypi.org/project/pytest/)                               | Popular testing framework for Python                                                        |
+| [pytest-base-url](https://pypi.org/project/pytest-base-url/)             | Pytest plugin for setting a base URL for your tests                                         |
+| [pytest-playwright](https://pypi.org/project/pytest-playwright/)         | Pytest plugin for Playwright integration for browser automation testing                     |
+| [requests](https://pypi.org/project/requests/)                           | Versatile library for making HTTP requests in Python                                        |
 
 ## ⚙️ Setup Instructions
 
