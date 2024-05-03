@@ -59,7 +59,7 @@ jobs:
           pytest -m devRun --base-url ${{ vars.BASE_URL }}
       - name: Store Artifacts from Failed Tests
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v4.3.1
         with:
           name: test-results
           path: test-results/
