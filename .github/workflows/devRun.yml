@@ -57,6 +57,13 @@ jobs:
           fluxbox -display :99.0 2&1>/dev/null &
           exec $@
           pytest -m devRun --base-url ${{ vars.BASE_URL }}
+      - name: Store Artifacts from Failed Tests
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: test-results/
+          retention-days: 7
       - name: Add allure information
         working-directory: allure-results
         if: always()
@@ -67,6 +74,7 @@ jobs:
           echo GIT_COMMIT_AUTHOR_NAME=$(git show -s --format='%ae' HEAD) >> environment.properties
           echo GIT_COMMIT_TIME=$(git show -s --format=%ci HEAD) >> environment.properties
           echo CHROME_VERSION=$(google-chrome --product-version) >> environment.properties
+          echo ARTIFACT_URL=${{ steps.artifact-upload-step.outputs.artifact-url }} >> environment.properties
       - name: Allure results
         uses: simple-elf/allure-report-action@master
         if: always()
@@ -83,10 +91,3 @@ jobs:
           PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PUBLISH_BRANCH: gh-pages
           PUBLISH_DIR: allure-history
-      - name: Store Artifacts from Failed Tests
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: test-results
-          path: test-results/
-          retention-days: 7
