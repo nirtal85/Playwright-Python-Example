@@ -1,0 +1,2 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"failed","Fri May 03 20:08:12 GMT 2024","Fri May 03 20:08:17 GMT 2024","5257","tests","login_test","TestLogin","","","Login with valid credentials test",""
