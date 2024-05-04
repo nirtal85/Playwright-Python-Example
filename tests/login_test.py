@@ -15,7 +15,7 @@ class TestLogin:
     @allure.title("Login with valid credentials test")
     def test_valid_login(self, base_url, page: Page):
         self.login_page.login(User.STANDARD_USER, "secret_sauce")
-        expect(page).to_have_url(f"{base_url}inventory.html1")
+        expect(page).to_have_url(f"{base_url}inventory.html")
 
     @pytest.mark.parametrize(
         "username, password, expected_error",
