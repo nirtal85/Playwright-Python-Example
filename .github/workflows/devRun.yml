@@ -39,7 +39,7 @@ jobs:
         with:
           packages: xvfb fluxbox
           version: 1.0
-      - name: install playwright browsers
+      - name: Install Playwright Browsers
         run: npx playwright install --with-deps
       - name: Test with pytest
         run: |
@@ -57,7 +57,7 @@ jobs:
           fluxbox -display :99.0 2&1>/dev/null &
           exec $@
           pytest -m devRun --base-url ${{ vars.BASE_URL }}
-      - name: Store Artifacts from Failed Tests
+      - name: Store Playwright Traces and Videos From Failed Tests
         if: failure()
         uses: actions/upload-artifact@v4.3.1
         id: artifact-upload-step
@@ -65,7 +65,11 @@ jobs:
           name: test-results
           path: test-results/
           retention-days: 7
-      - name: Add allure information
+      - name: Link Playwright Traces And Videos To Allure Report
+        working-directory: allure-results
+        if: failure()
+        run: echo ARTIFACT_URL=${{ steps.artifact-upload-step.outputs.artifact-url }} >> environment.properties
+      - name: Link Git Information And Browser Version To Allure Report
         working-directory: allure-results
         if: always()
         run: |
@@ -75,8 +79,7 @@ jobs:
           echo GIT_COMMIT_AUTHOR_NAME=$(git show -s --format='%ae' HEAD) >> environment.properties
           echo GIT_COMMIT_TIME=$(git show -s --format=%ci HEAD) >> environment.properties
           echo CHROME_VERSION=$(google-chrome --product-version) >> environment.properties
-          echo ARTIFACT_URL=${{ steps.artifact-upload-step.outputs.artifact-url }} >> environment.properties
-      - name: Allure results
+      - name: Generate Allure Report
         uses: simple-elf/allure-report-action@master
         if: always()
         id: allure-report
@@ -85,7 +88,7 @@ jobs:
           allure_report: allure-report
           gh_pages: gh-pages
           allure_history: allure-history
-      - name: Deploy report to Github Pages
+      - name: Deploy Report To Github Pages
         if: always()
         uses: peaceiris/actions-gh-pages@v4
         with:
