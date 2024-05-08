@@ -13,6 +13,7 @@
 * [Test Automation - Maximizing Browser Window With Playwright Python And Pytest](https://www.linkedin.com/pulse/test-automation-maximizing-browser-window-playwright-nir-tal-c24hf/)
 * [Test Automation - How to Bypass Re-Login With Playwright Python And Pytest](https://www.linkedin.com/pulse/test-automation-how-bypass-re-login-playwright-python-nir-tal-cfnnf/)
 * [Test Automation - How To Perform Automated Accessibility Checks Using Playwright Python And Axe](https://www.linkedin.com/pulse/how-perform-automated-accessibility-tests-using-playwright-nir-tal-hupxf/)
+* [Test Automation: How To Link Playwright Traces and Videos to Allure Report using GitHub Actions](https://www.linkedin.com/pulse/test-automation-how-link-playwright-traces-videos-allure-nir-tal-vkm2f/)
 
 ## 🛠️ Tech Stack
 
