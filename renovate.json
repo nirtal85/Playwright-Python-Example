@@ -5,5 +5,8 @@
   ],
   "pre-commit": {
     "enabled": true
-  }
+  },
+  "schedule": [
+    "once a month"
+  ]
 }
