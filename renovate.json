@@ -7,6 +7,6 @@
     "enabled": true
   },
   "schedule": [
-    "once a month"
+    "before 4am on the first day of the month"
   ]
 }
