@@ -1,1 +1,0 @@
-{"bceb67a36a3aa1c7c1ff06e1e478847e":{"statistic":{"failed":0,"broken":0,"skipped":0,"passed":1,"unknown":0,"total":1},"items":[{"uid":"5b2bd67c5d6a2d50","reportUrl":"https://nirtal85.github.io/Playwright-Python-Example/187//#testresult/5b2bd67c5d6a2d50","status":"passed","time":{"start":1716275800807,"stop":1716275801382,"duration":575}}]}}
