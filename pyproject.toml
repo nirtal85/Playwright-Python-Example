@@ -23,7 +23,7 @@ pytest = "8.2.1"
 pytest-base-url = "2.1.0"
 pytest-playwright = "0.5.0"
 python = "^3.11"
-requests = "2.32.2"
+requests = "2.32.3"
 
 [tool.poetry.group.dev.dependencies]
 black = "24.4.2"
