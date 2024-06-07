@@ -1,7 +1,0 @@
-"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Thu Jun 06 00:50:13 GMT 2024","Thu Jun 06 00:50:13 GMT 2024","157","tests","login_test","TestLogin","","","Login with invalid credentials test",""
-"failed","Thu Jun 06 00:50:10 GMT 2024","Thu Jun 06 00:50:10 GMT 2024","173","tests","accesability_test","TestAccessibility","","","Test Accessibility with Default Counts",""
-"passed","Thu Jun 06 00:50:11 GMT 2024","Thu Jun 06 00:50:11 GMT 2024","162","tests","accesability_test","TestAccessibility","","","Test Accessibility with Custom Counts",""
-"passed","Thu Jun 06 00:50:12 GMT 2024","Thu Jun 06 00:50:12 GMT 2024","42","tests","inventory_test","TestInventory","","","test_inventory_page[chromium-User.STANDARD_USER]",""
-"passed","Thu Jun 06 00:50:13 GMT 2024","Thu Jun 06 00:50:13 GMT 2024","153","tests","login_test","TestLogin","","","Login with invalid credentials test",""
-"passed","Thu Jun 06 00:50:12 GMT 2024","Thu Jun 06 00:50:12 GMT 2024","199","tests","checkout_test","TestCheckout","","","test_checkout_counter[chromium-User.STANDARD_USER]",""
