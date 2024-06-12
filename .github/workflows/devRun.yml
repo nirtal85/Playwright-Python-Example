@@ -12,7 +12,7 @@ jobs:
     timeout-minutes: 15
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.44.1-jammy
+      image: mcr.microsoft.com/playwright/python:v1.44.0-jammy
     steps:
       - uses: actions/checkout@v4
       - name: Set up Python
