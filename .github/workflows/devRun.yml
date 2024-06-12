@@ -20,7 +20,7 @@ jobs:
         with:
           python-version: '3.12'
       - uses: psf/black@stable
-      - uses: isort/isort-action@v1
+#      - uses: isort/isort-action@v1
       - name: Install Poetry
         uses: snok/install-poetry@v1
         with:
