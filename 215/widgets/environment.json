@@ -1,1 +1,1 @@
-[]
+[{"values":["https://github.com/nirtal85/Playwright-Python-Example/actions/runs/9708157376"],"name":"BUILD_URL"},{"values":["added-manual-trigger"],"name":"GIT_BRANCH"},{"values":["cd9f38251a7f2d7937601201e274262f0bad7c8c"],"name":"GIT_COMMIT_ID"},{"values":["Merge 715634104d1be7d158be6fa7d5605a5498e44c52 into a465d6c1101c7158a64d640af423497e002fe0c4"],"name":"GIT_COMMIT_MESSAGE"},{"values":["nirt236@gmail.com"],"name":"GIT_COMMIT_AUTHOR_NAME"},{"values":["2024-06-28 08:58:22 +0300"],"name":"GIT_COMMIT_TIME"},{"values":["126.0.6478.126"],"name":"CHROME_VERSION"}]

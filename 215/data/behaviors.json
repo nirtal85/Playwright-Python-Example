@@ -1,1 +1,1 @@
-{"uid":"b1a8273437954620fa374b796ffaacdd","children":[],"name":"behaviors"}
+{"uid":"b1a8273437954620fa374b796ffaacdd","children":[{"name":"Login with valid credentials test","uid":"a2321948baa6454a","parentUid":"b1a8273437954620fa374b796ffaacdd","status":"passed","time":{"start":1719554542483,"stop":1719554542946,"duration":463},"flaky":false,"newFailed":false,"newPassed":false,"newBroken":false,"retriesCount":0,"retriesStatusChange":false,"parameters":["'chromium'"],"tags":["devRun"]}],"name":"behaviors"}
