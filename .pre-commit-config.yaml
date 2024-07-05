@@ -24,13 +24,13 @@ repos:
       - id: no-commit-to-branch
         args: [ '--branch', 'main' ]
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.28.4
+    rev: 0.28.6
     hooks:
       - id: check-github-workflows
         args: ["--verbose"]
       - id: check-renovate
   - repo: https://github.com/compilerla/conventional-pre-commit
-    rev: v2.1.1
+    rev: v3.2.0
     hooks:
       - id: conventional-pre-commit
         stages: [commit-msg]
@@ -65,7 +65,7 @@ repos:
       - id: isort
         args: [ '--settings-file', 'pyproject.toml' ]
   - repo: https://github.com/asottile/pyupgrade
-    rev: v3.15.2
+    rev: v3.16.0
     hooks:
       - id: pyupgrade
   - repo: https://github.com/codespell-project/codespell
