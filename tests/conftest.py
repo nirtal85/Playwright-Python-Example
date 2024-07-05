@@ -6,7 +6,7 @@ import requests
 from _pytest.fixtures import FixtureRequest, SubRequest
 from _pytest.nodes import Item
 from axe_playwright_python.sync_playwright import Axe
-from playwright.sync_api import Page
+from playwright.sync_api import Page, Playwright
 
 from utilities.axe_helper import AxeHelper
 from utilities.constants import Constants
@@ -85,17 +85,26 @@ def browser_context_args(
 
 
 @pytest.fixture(scope="session")
-def browser_type_launch_args(browser_type_launch_args: Dict):
+def browser_type_launch_args(browser_type_launch_args: Dict, playwright: Playwright):
     """Fixture to set browser launch arguments.
 
+    This fixture updates the browser launch arguments to start the browser maximized
+    and sets the test ID attribute for selectors.
+
     Args:
-        browser_type_launch_args (dict): Browser type launch arguments.
+        browser_type_launch_args (Dict): Original browser type launch arguments.
+        playwright (Playwright): The Playwright instance.
 
     Returns:
-        dict: Updated browser type launch arguments.
+        Dict: Updated browser type launch arguments with maximized window setting.
+
+    Note:
+        This fixture has a session scope, meaning it will be executed once per test session.
+
     See Also:
         https://playwright.dev/python/docs/api/class-browsertype#browser-type-launch
     """
+    playwright.selectors.set_test_id_attribute("data-test")
     return {**browser_type_launch_args, "args": ["--start-maximized"]}
 
 
