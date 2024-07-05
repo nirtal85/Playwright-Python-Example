@@ -15,6 +15,7 @@
 * [Test Automation - How To Perform Automated Accessibility Checks Using Playwright Python And Axe](https://www.linkedin.com/pulse/how-perform-automated-accessibility-tests-using-playwright-nir-tal-hupxf/)
 * [Test Automation: How To Link Playwright Traces and Videos to Allure Report using GitHub Actions](https://www.linkedin.com/pulse/test-automation-how-link-playwright-traces-videos-allure-nir-tal-vkm2f/)
 * [Test Automation - Speeding Up Testing with Playwright Python using Local Storage](https://www.linkedin.com/pulse/test-automation-speeding-up-testing-playwright-python-nir-tal-gmmtf/)
+* [Test Automation - Efficient Element Selection with Playwright Python using Test IDs](https://www.linkedin.com/pulse/test-automation-efficient-element-selection-playwright-nir-tal-gcbmf/)
 
 ## 🛠️ Tech Stack
 
