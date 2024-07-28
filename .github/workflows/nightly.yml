@@ -7,6 +7,11 @@ on:
   schedule:
     - cron: "0 0 * * *"
   workflow_dispatch:
+    inputs:
+      pytest_command:
+        description: 'Custom pytest command'
+        required: true
+        default: '-m "not devRun"'
 
 jobs:
   nightly:
@@ -33,10 +38,15 @@ jobs:
         run: poetry install --no-interaction --no-root
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
-      - name: Test with pytest
+      - name: Run custom pytest command
+        if: github.event_name == 'workflow_dispatch'
         run: |
           source .venv/bin/activate
-          exec $@
+          xvfb-run pytest ${{ github.event.inputs.pytest_command }} --base-url ${{ vars.BASE_URL }}
+      - name: Run default pytest command
+        if: github.event_name != 'workflow_dispatch'
+        run: |
+          source .venv/bin/activate
           xvfb-run pytest -m "not devRun" --base-url ${{ vars.BASE_URL }}
       - name: Store Playwright Traces and Videos From Failed Tests
         if: failure()
