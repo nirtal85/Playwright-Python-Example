@@ -74,17 +74,24 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           path: artifacts
+      - name: Merge test results
+        run: |
+          mkdir -p merged-test-results
+          for dir in artifacts/test-results-*/test-results; do
+            cp -r $dir/* merged-test-results/
+          done
+      - name: Upload merged test results
+        uses: actions/upload-artifact@v4.3.4
+        id: merged-artifact-upload
+        with:
+          name: merged-test-results
+          path: merged-test-results/
+          retention-days: 7
       - name: Merge Allure results
         run: |
           mkdir -p allure-results
           for dir in artifacts/test-results-*/allure-results; do
             cp -r $dir/* allure-results/
-          done
-      - name: Link Playwright Traces And Videos To Allure Report
-        working-directory: allure-results
-        run: |
-          for dir in artifacts/test-results-*; do
-            echo "ARTIFACT_URL_$(basename $dir)=${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" >> environment.properties
           done
       - name: Link Git Information And Browser Version To Allure Report
         working-directory: allure-results
@@ -120,3 +127,7 @@ jobs:
             echo "Some tests failed. Failing the job."
             exit 1
           fi
+      - name: Link Playwright Traces And Videos To Allure Report
+        working-directory: allure-results
+        if: failure()
+        run: echo ARTIFACT_URL=${{ steps.merged-artifact-upload.outputs.artifact-url }} >> environment.properties
