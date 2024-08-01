@@ -22,6 +22,7 @@ playwright = "1.45.1"
 pytest = "8.3.2"
 pytest-base-url = "2.1.0"
 pytest-playwright = "0.5.1"
+pytest-split = "^0.9.0"
 python = "^3.11"
 requests = "2.32.3"
 

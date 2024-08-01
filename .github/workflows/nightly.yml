@@ -14,8 +14,11 @@ on:
         default: '-m "not devRun"'
 
 jobs:
-  nightly:
+  nightly-test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        group: [1, 2]
     steps:
       - uses: actions/checkout@v4
       - name: Set up Python
@@ -38,28 +41,63 @@ jobs:
         run: poetry install --no-interaction --no-root
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
-      - name: Run custom pytest command
-        if: github.event_name == 'workflow_dispatch'
+      - name: Run Tests
         run: |
+          mkdir -p exit-code allure-results
           source .venv/bin/activate
-          xvfb-run pytest ${{ github.event.inputs.pytest_command }} --base-url ${{ vars.BASE_URL }}
-      - name: Run default pytest command
-        if: github.event_name != 'workflow_dispatch'
-        run: |
-          source .venv/bin/activate
-          xvfb-run pytest -m "not devRun" --base-url ${{ vars.BASE_URL }}
-      - name: Store Playwright Traces and Videos From Failed Tests
-        if: failure()
-        uses: actions/upload-artifact@v4.3.4
-        id: artifact-upload-step
+          exit_code=0
+          {
+            if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+              pytest_args="${{ github.event.inputs.pytest_command }}"
+            else
+              pytest_args="-m \"not devRun\""
+            fi
+            xvfb-run pytest $pytest_args \
+              --base-url ${{ vars.BASE_URL }} \
+              --splits 2 \
+              --group ${{ matrix.group }}
+          } || {
+            exit_code=$?
+          }
+          echo $exit_code > exit-code/shard_${{ matrix.group }}.txt
+      - name: Upload test results and artifacts
+        uses: actions/upload-artifact@v4.3.3
         with:
-          name: test-results
-          path: test-results/
+          name: test-results-${{ matrix.group }}
+          path: |
+            test-results/
+            allure-results
+            exit-code
           retention-days: 7
-      - name: Link Playwright Traces And Videos To Allure Report
-        working-directory: allure-results
-        if: failure()
-        run: echo ARTIFACT_URL=${{ steps.artifact-upload-step.outputs.artifact-url }} >> environment.properties
+
+  merge-reports:
+    needs: nightly-test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download all test results
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Merge test results
+        run: |
+          mkdir -p merged-test-results
+          for dir in artifacts/test-results-*/test-results; do
+            cp -r $dir/* merged-test-results/
+          done
+      - name: Upload Merged Test Results
+        uses: actions/upload-artifact@v4.3.4
+        id: merged-artifact-upload
+        with:
+          name: merged-test-results
+          path: merged-test-results/
+          retention-days: 7
+      - name: Merge Allure Results
+        run: |
+          mkdir -p allure-results
+          for dir in artifacts/test-results-*/allure-results; do
+            cp -r $dir/* allure-results/
+          done
       - name: Link Git Information And Browser Version To Allure Report
         working-directory: allure-results
         if: always()
@@ -73,6 +111,17 @@ jobs:
            echo GIT_COMMIT_TIME=$(git show -s --format=%ci HEAD)
            echo CHROME_VERSION=$(google-chrome --product-version)
           } >> environment.properties
+      - name: Check test results
+        run: |
+          exit_codes=$(cat artifacts/test-results-*/exit-code/shard_*.txt)
+          if echo "$exit_codes" | grep -q -v '^0$'; then
+            echo "Some tests failed. Failing the job."
+            exit 1
+          fi
+      - name: Link Playwright Traces And Videos To Allure Report
+        working-directory: allure-results
+        if: failure()
+        run: echo ARTIFACT_URL=${{ steps.merged-artifact-upload.outputs.artifact-url }} >> environment.properties
       - name: Generate Allure Report
         uses: simple-elf/allure-report-action@master
         if: always()
