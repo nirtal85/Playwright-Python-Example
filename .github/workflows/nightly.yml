@@ -95,6 +95,7 @@ jobs:
           done
       - name: Link Git Information And Browser Version To Allure Report
         working-directory: allure-results
+        if: always()
         run: |
           {
            echo BUILD_URL=${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
@@ -105,6 +106,17 @@ jobs:
            echo GIT_COMMIT_TIME=$(git show -s --format=%ci HEAD)
            echo CHROME_VERSION=$(google-chrome --product-version)
           } >> environment.properties
+      - name: Check test results
+        run: |
+          exit_codes=$(cat artifacts/test-results-*/exit-code/shard_*.txt)
+          if echo "$exit_codes" | grep -q -v '^0$'; then
+            echo "Some tests failed. Failing the job."
+            exit 1
+          fi
+      - name: Link Playwright Traces And Videos To Allure Report
+        working-directory: allure-results
+        if: failure()
+        run: echo ARTIFACT_URL=${{ steps.merged-artifact-upload.outputs.artifact-url }} >> environment.properties
       - name: Generate Allure Report
         uses: simple-elf/allure-report-action@master
         if: always()
@@ -120,14 +132,3 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: allure-history
-      - name: Check test results
-        run: |
-          exit_codes=$(cat artifacts/test-results-*/exit-code/shard_*.txt)
-          if echo "$exit_codes" | grep -q -v '^0$'; then
-            echo "Some tests failed. Failing the job."
-            exit 1
-          fi
-      - name: Link Playwright Traces And Videos To Allure Report
-        working-directory: allure-results
-        if: failure()
-        run: echo ARTIFACT_URL=${{ steps.merged-artifact-upload.outputs.artifact-url }} >> environment.properties
