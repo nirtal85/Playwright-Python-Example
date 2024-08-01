@@ -44,7 +44,7 @@ jobs:
         if: success()
       - name: Store Playwright Traces and Videos From Failed Tests
         if: failure()
-        uses: actions/upload-artifact@v4.3.3
+        uses: actions/upload-artifact@v4.3.4
         id: artifact-upload-step
         with:
           name: test-results
