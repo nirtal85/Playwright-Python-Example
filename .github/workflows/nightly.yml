@@ -16,18 +16,23 @@ on:
         type: number
 
 jobs:
-  nightly-test:
+  setup-matrix:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        group: ${{ fromJson(steps.set-matrix.outputs.matrix) }}
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
-      - name: Set Matrix
-        id: set-matrix
+      - id: set-matrix
         run: |
           count=${{ github.event.inputs.machine_count || 2 }}
           matrix=$(seq -s ',' 1 $count)
-          echo "::set-output name=matrix::[$matrix]"
+          echo "matrix=$(jq -cn --argjson groups "[$matrix]" '{group: $groups}')" >> $GITHUB_OUTPUT
+
+  nightly-test:
+    needs: setup-matrix
+    runs-on: ubuntu-latest
+    strategy:
+      matrix: ${{ fromJson(needs.setup-matrix.outputs.matrix) }}
+    steps:
       - uses: actions/checkout@v4
       - name: Set up Python
         uses: actions/setup-python@v5
