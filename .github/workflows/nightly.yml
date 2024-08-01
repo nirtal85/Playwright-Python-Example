@@ -9,6 +9,7 @@ on:
         description: 'Custom pytest command'
         required: true
         default: '-m "not devRun"'
+        type: string
       machine_count:
         description: 'Number of machines to split tests'
         required: false
