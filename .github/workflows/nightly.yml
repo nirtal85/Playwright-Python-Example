@@ -10,7 +10,7 @@ on:
         required: true
         default: '-m "not devRun"'
         type: string
-      machine_count:
+      parallelism:
         description: 'Number of machines to split tests'
         required: false
         default: 2
@@ -24,7 +24,7 @@ jobs:
     steps:
       - id: set-matrix
         run: |
-          count=${{ github.event.inputs.machine_count || 2 }}
+          count=${{ github.event.inputs.parallelism || 2 }}
           matrix=$(seq -s ',' 1 $count)
           echo "matrix=$(jq -cn --argjson groups "[$matrix]" '{group: $groups}')" >> $GITHUB_OUTPUT
 
@@ -68,7 +68,7 @@ jobs:
             fi
             xvfb-run pytest $pytest_args \
               --base-url ${{ vars.BASE_URL }} \
-              --splits ${{ github.event.inputs.machine_count || 2 }} \
+              --splits ${{ github.event.inputs.parallelism || 2 }} \
               --group ${{ matrix.group }}
           } || {
             exit_code=$?
