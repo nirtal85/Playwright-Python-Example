@@ -64,7 +64,7 @@ jobs:
             if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
               pytest_args="${{ github.event.inputs.pytest_command }}"
             else
-              pytest_args="-m \"not devRun\""
+              pytest_args='-m "not devRun"'
             fi
             xvfb-run pytest $pytest_args \
               --base-url ${{ vars.BASE_URL }} \
