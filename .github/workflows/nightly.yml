@@ -62,7 +62,7 @@ jobs:
           exit_code=0
           {
             if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
-              pytest_args="${{ github.event.inputs.pytest_command }}"
+              pytest_args='-m "not devRun"'
             else
               pytest_args='-m "not devRun"'
             fi
