@@ -7,7 +7,7 @@ on:
     inputs:
       pytest_command:
         description: 'Custom pytest command'
-        required: true
+        required: false
         default: '-m "not devRun"'
         type: string
       machine_count:
@@ -61,12 +61,7 @@ jobs:
           source .venv/bin/activate
           exit_code=0
           {
-            if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
-              pytest_args="${{ github.event.inputs.pytest_command }}"
-            else
-              pytest_args='-m "not devRun"'
-            fi
-            xvfb-run pytest $pytest_args \
+            xvfb-run pytest -m ${{ github.event.inputs.pytest_command || '-m "not devRun"' }} \
               --base-url ${{ vars.BASE_URL }} \
               --splits ${{ github.event.inputs.machine_count || 2 }} \
               --group ${{ matrix.group }}
