@@ -7,7 +7,7 @@ on:
     inputs:
       pytest_command:
         description: 'Custom pytest command'
-        required: false
+        required: true
         default: '-m "not devRun"'
         type: string
       machine_count:
