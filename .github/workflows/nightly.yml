@@ -2,7 +2,7 @@ name: Nightly regression tests
 
 on:
   schedule:
-    - cron: "* * * * *"
+    - cron: "0 0 * * *"
   workflow_dispatch:
     inputs:
       pytest_command:
