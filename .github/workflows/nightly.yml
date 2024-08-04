@@ -2,7 +2,7 @@ name: Nightly regression tests
 
 on:
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "* * * * *"
   workflow_dispatch:
     inputs:
       pytest_command:
@@ -61,12 +61,7 @@ jobs:
           source .venv/bin/activate
           exit_code=0
           {
-            if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
-              pytest_args="${{ github.event.inputs.pytest_command }}"
-            else
-              pytest_args='-m "not devRun"'
-            fi
-            xvfb-run pytest $pytest_args \
+            xvfb-run pytest ${{ github.event.inputs.pytest_command || '-m "not devRun"' }} \
               --base-url ${{ vars.BASE_URL }} \
               --splits ${{ github.event.inputs.parallelism || 2 }} \
               --group ${{ matrix.group }}
