@@ -61,7 +61,7 @@ jobs:
           source .venv/bin/activate
           exit_code=0
           {
-            xvfb-run pytest -m ${{ github.event.inputs.pytest_command || '-m "not devRun"' }} \
+            xvfb-run pytest ${{ github.event.inputs.pytest_command || '-m "not devRun"' }} \
               --base-url ${{ vars.BASE_URL }} \
               --splits ${{ github.event.inputs.machine_count || 2 }} \
               --group ${{ matrix.group }}
