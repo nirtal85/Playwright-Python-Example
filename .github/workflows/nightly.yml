@@ -57,23 +57,23 @@ jobs:
         run: npx playwright install --with-deps
       - name: Run Tests
         run: |
-          mkdir -p exit-code allure-results
-          source .venv/bin/activate
-          exit_code=0
-          {
-            if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
-              pytest_args='-m "not devRun"'
-            else
-              pytest_args='-m "not devRun"'
-            fi
-            xvfb-run pytest $pytest_args \
-              --base-url ${{ vars.BASE_URL }} \
-              --splits ${{ github.event.inputs.machine_count || 2 }} \
-              --group ${{ matrix.group }}
-          } || {
-            exit_code=$?
-          }
-          echo $exit_code > exit-code/shard_${{ matrix.group }}.txt
+          echo "mkdir -p exit-code allure-results"
+          echo "source .venv/bin/activate"
+          echo "exit_code=0"
+          echo "{"
+          echo "  if [[ \"${{ github.event_name }}\" == \"workflow_dispatch\" ]]; then"
+          echo "    pytest_args='-m \"not devRun\"'"
+          echo "  else"
+          echo "    pytest_args='-m \"not devRun\"'"
+          echo "  fi"
+          echo "  xvfb-run pytest \$pytest_args \\"
+          echo "    --base-url ${{ vars.BASE_URL }} \\"
+          echo "    --splits ${{ github.event.inputs.machine_count || 2 }} \\"
+          echo "    --group ${{ matrix.group }}"
+          echo "} || {"
+          echo "  exit_code=\$?"
+          echo "}"
+          echo "echo \$exit_code > exit-code/shard_${{ matrix.group }}.txt"
       - name: Upload test results and artifacts
         uses: actions/upload-artifact@v4.3.3
         with:
