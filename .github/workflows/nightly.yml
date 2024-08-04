@@ -71,7 +71,8 @@ jobs:
             xvfb-run pytest $pytest_args \
               --base-url ${{ vars.BASE_URL }} \
               --splits ${{ github.event.inputs.machine_count || 2 }} \
-              --group ${{ matrix.group }}
+              --group ${{ matrix.group }} \
+              --collect-only -v
           } || {
             exit_code=$?
           }
