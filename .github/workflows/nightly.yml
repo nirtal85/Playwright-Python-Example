@@ -68,7 +68,7 @@ jobs:
             fi
             # Print the full pytest command
             echo "Running command: xvfb-run pytest $pytest_args --base-url ${{ vars.BASE_URL }} --splits ${{ github.event.inputs.machine_count || 2 }} --group ${{ matrix.group }}"
-            xvfb-run pytest $pytest_args \
+            xvfb-run pytest -m "not devRun" \
               --base-url ${{ vars.BASE_URL }} \
               --splits ${{ github.event.inputs.machine_count || 2 }} \
               --group ${{ matrix.group }} \
