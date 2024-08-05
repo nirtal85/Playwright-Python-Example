@@ -71,7 +71,6 @@ jobs:
           path: |
             test-results/
             allure-results
-            exit-code
           retention-days: 7
 
   merge-reports:
