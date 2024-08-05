@@ -1,0 +1,4 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"failed","Mon Aug 05 19:17:00 GMT 2024","Mon Aug 05 19:17:00 GMT 2024","148","tests","accesability_test","TestAccessibility","","","Test Accessibility with Default Counts",""
+"passed","Mon Aug 05 19:17:01 GMT 2024","Mon Aug 05 19:17:01 GMT 2024","154","tests","accesability_test","TestAccessibility","","","Test Accessibility with Custom Counts",""
+"passed","Mon Aug 05 19:17:01 GMT 2024","Mon Aug 05 19:17:01 GMT 2024","186","tests","checkout_test","TestCheckout","","","test_checkout_counter[chromium-User.STANDARD_USER]",""
