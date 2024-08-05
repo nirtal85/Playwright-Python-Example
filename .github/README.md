@@ -13,10 +13,11 @@
 * [Test Automation - Maximizing Browser Window With Playwright Python And Pytest](https://www.linkedin.com/pulse/test-automation-maximizing-browser-window-playwright-nir-tal-c24hf/)
 * [Test Automation - How to Bypass Re-Login With Playwright Python And Pytest](https://www.linkedin.com/pulse/test-automation-how-bypass-re-login-playwright-python-nir-tal-cfnnf/)
 * [Test Automation - How To Perform Automated Accessibility Checks Using Playwright Python And Axe](https://www.linkedin.com/pulse/how-perform-automated-accessibility-tests-using-playwright-nir-tal-hupxf/)
-* [Test Automation: How To Link Playwright Traces and Videos to Allure Report using GitHub Actions](https://www.linkedin.com/pulse/test-automation-how-link-playwright-traces-videos-allure-nir-tal-vkm2f/)
+* [Test Automation - How To Link Playwright Traces and Videos to Allure Report using GitHub Actions](https://www.linkedin.com/pulse/test-automation-how-link-playwright-traces-videos-allure-nir-tal-vkm2f/)
 * [Test Automation - Speeding Up Testing with Playwright Python using Local Storage](https://www.linkedin.com/pulse/test-automation-speeding-up-testing-playwright-python-nir-tal-gmmtf/)
 * [Test Automation - Efficient Element Selection with Playwright Python using Test IDs](https://www.linkedin.com/pulse/test-automation-efficient-element-selection-playwright-nir-tal-gcbmf/)
 * [Test Automation - Flexible Test Execution with Playwright Python and GitHub Actions](https://www.linkedin.com/pulse/test-automation-flexible-execution-playwright-python-nir-tal-38xkf/)
+* [Test Automation - Accelerating Playwright Python Tests with Parallel Execution in GitHub Actions](https://www.linkedin.com/pulse/test-automation-accelerating-playwright-python-tests-parallel-nir-tal-163of/)
 
 ## 🛠️ Tech Stack
 
