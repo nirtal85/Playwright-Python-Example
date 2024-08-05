@@ -57,19 +57,14 @@ jobs:
         run: npx playwright install --with-deps
       - name: Run Tests
         run: |
-          mkdir -p exit-code allure-results
+          mkdir -p allure-results
           source .venv/bin/activate
-          exit_code=0
-          {
             xvfb-run pytest ${{ github.event.inputs.pytest_command || '-m "not devRun"' }} \
               --base-url ${{ vars.BASE_URL }} \
               --splits ${{ github.event.inputs.parallelism || 2 }} \
               --group ${{ matrix.group }}
-          } || {
-            exit_code=$?
-          }
-          echo $exit_code > exit-code/shard_${{ matrix.group }}.txt
       - name: Upload test results and artifacts
+        if: always()
         uses: actions/upload-artifact@v4.3.3
         with:
           name: test-results-${{ matrix.group }}
@@ -81,6 +76,7 @@ jobs:
 
   merge-reports:
     needs: nightly-test
+    if: always()
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -120,13 +116,6 @@ jobs:
            echo GIT_COMMIT_TIME=$(git show -s --format=%ci HEAD)
            echo CHROME_VERSION=$(google-chrome --product-version)
           } >> environment.properties
-      - name: Check test results
-        run: |
-          exit_codes=$(cat artifacts/test-results-*/exit-code/shard_*.txt)
-          if echo "$exit_codes" | grep -q -v '^0$'; then
-            echo "Some tests failed. Failing the job."
-            exit 1
-          fi
       - name: Link Playwright Traces And Videos To Allure Report
         working-directory: allure-results
         if: failure()
