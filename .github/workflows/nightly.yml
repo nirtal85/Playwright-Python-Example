@@ -119,7 +119,7 @@ jobs:
           } >> environment.properties
       - name: Link Playwright Traces And Videos To Allure Report
         working-directory: allure-results
-        if: failure()
+        if: contains(needs.*.result, 'failure')
         run: echo ARTIFACT_URL=${{ steps.merged-artifact-upload.outputs.artifact-url }} >> environment.properties
       - name: Generate Allure Report
         uses: simple-elf/allure-report-action@master
