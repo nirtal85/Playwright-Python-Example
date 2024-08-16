@@ -81,29 +81,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Download all test results
+      - name: Download Allure results
         uses: actions/download-artifact@v4
         with:
-          path: artifacts
-      - name: Merge test results
-        run: |
-          mkdir -p merged-test-results
-          for dir in artifacts/test-results-*/test-results; do
-            cp -r $dir/* merged-test-results/
-          done
-      - name: Upload Merged Test Results
+          path: allure-results
+          pattern: '**/allure-results'
+          merge-multiple: true
+      - name: Download Playwright Traces And Videos
+        uses: actions/download-artifact@v4
+        with:
+          path: test-results
+          pattern: '**/test-results'
+          merge-multiple: true
+      - name: Upload Merged Playwright Traces And Videos
+        if: contains(needs.*.result, 'failure')
         uses: actions/upload-artifact@v4.3.4
         id: merged-artifact-upload
         with:
           name: merged-test-results
-          path: merged-test-results/
+          path: test-results/
           retention-days: 7
-      - name: Merge Allure Results
-        run: |
-          mkdir -p allure-results
-          for dir in artifacts/test-results-*/allure-results; do
-            cp -r $dir/* allure-results/
-          done
       - name: Link Git Information And Browser Version To Allure Report
         working-directory: allure-results
         if: always()
