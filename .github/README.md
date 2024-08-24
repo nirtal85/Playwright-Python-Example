@@ -34,14 +34,14 @@
 
 ## ⚙️ Setup Instructions
 
-### Step 1: Clone the project
+### Clone the project
 
 ```bash
 git clone https://github.com/nirtal85/Playwright-Python-Example
 cd playwright-python
 ```
 
-### Step 2: Create and activate a virtual environment
+### Create and activate a virtual environment
 
 #### For Windows:
 ```bash
@@ -57,19 +57,19 @@ python3 -m venv venv
 source venv/bin/activate
 ```
 
-### Step 3: Install Poetry
+### Install Poetry
 
 ```bash
 pip install poetry
 ```
 
-### Step 4: Install Project Dependencies
+### Install Project Dependencies
 
 ```bash
 poetry install --no-root
 ```
 
-### Step 5: Install playwright
+### Install playwright
 
 ```bash
 playwright install
