@@ -12,4 +12,4 @@ class TestCheckout:
     def test_checkout_counter(self, browser_context_args, page: Page):
         page.evaluate("localStorage.setItem('cart-contents', '[4,0]');")
         page.reload()
-        expect(page.locator("data-test=shopping-cart-badge")).to_have_text("2")
+        expect(page.get_by_test_id("shopping-cart-badge")).to_have_text("2")
