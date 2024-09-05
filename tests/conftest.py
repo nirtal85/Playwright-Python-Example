@@ -76,7 +76,7 @@ def browser_context_args(
             "cookies": [
                 {
                     "name": "session-username",
-                    "value": request.param.value,
+                    "value": request.param,
                     "url": base_url,
                 }
             ]
