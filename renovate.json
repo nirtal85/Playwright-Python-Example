@@ -8,6 +8,16 @@
       "groupName": "all pre-commit updates",
       "managers": [
         "pre-commit"
+      ],
+      "matchUpdateTypes": [
+        "major",
+        "minor",
+        "patch",
+        "pin",
+        "digest",
+        "lockFileMaintenance",
+        "rollback",
+        "bump"
       ]
     }
   ],
