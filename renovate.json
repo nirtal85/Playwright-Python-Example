@@ -11,9 +11,6 @@
       ]
     }
   ],
-  "pre-commit": {
-    "enabled": true
-  },
   "schedule": [
     "monthly"
   ]
