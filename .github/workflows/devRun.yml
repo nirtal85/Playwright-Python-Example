@@ -23,12 +23,6 @@ jobs:
           virtualenvs-in-project: true
           installer-parallel: true
           virtualenvs-path: .venv
-      - name: Load cached venv
-        id: cached-poetry-dependencies
-        uses: actions/cache@v4
-        with:
-          path: .venv
-          key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
       - name: Install Dependencies
         run: poetry install --no-interaction --no-root
       - name: Install Playwright Browsers
@@ -37,6 +31,12 @@ jobs:
         run: |
           source .venv/bin/activate
           xvfb-run pytest -m devRun --base-url ${{ vars.BASE_URL }}
+      - name: Cache dependencies if tests pass
+        if: success()
+        uses: actions/cache/save@v4
+        with:
+          path: .venv
+          key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
       - name: Auto-assign reviewers
         uses: kentaro-m/auto-assign-action@v2.0.0
         if: success()
