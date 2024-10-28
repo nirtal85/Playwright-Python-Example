@@ -8,11 +8,6 @@
       "groupName": "all pre-commit updates",
       "managers": [
         "pre-commit"
-      ],
-      "matchUpdateTypes": [
-        "major",
-        "minor",
-        "patch"
       ]
     }
   ],
@@ -20,6 +15,6 @@
     "enabled": true
   },
   "schedule": [
-    "before 4am on the first day of the month"
+    "monthly"
   ]
 }
