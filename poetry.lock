@@ -593,13 +593,13 @@ python-slugify = ">=6.0.0,<9.0.0"
 
 [[package]]
 name = "pytest-split"
-version = "0.9.0"
+version = "0.10.0"
 description = "Pytest plugin which splits the test suite to equally sized sub suites based on test execution time."
 optional = false
 python-versions = "<4.0,>=3.8.1"
 files = [
-    {file = "pytest_split-0.9.0-py3-none-any.whl", hash = "sha256:9e197df601828d76a1ab615158d9c6253ec9f96e46c1d3ea27187aa5ac0ef9de"},
-    {file = "pytest_split-0.9.0.tar.gz", hash = "sha256:ca52527e4d9024f6ec3aba723527bd276d12096024999b1f5b8445a38da1e81c"},
+    {file = "pytest_split-0.10.0-py3-none-any.whl", hash = "sha256:466096b086a7147bcd423c6e6c2e57fc62af1c5ea2e256b4ed50fc030fc3dddc"},
+    {file = "pytest_split-0.10.0.tar.gz", hash = "sha256:adf80ba9fef7be89500d571e705b4f963dfa05038edf35e4925817e6b34ea66f"},
 ]
 
 [package.dependencies]
@@ -780,4 +780,4 @@ test = ["covdefaults (>=2.3)", "coverage (>=7.2.7)", "coverage-enable-subprocess
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "ae5ccebc14efdf8928ff40bdd424e60de5260768bae2c4c1d5b37159c680ea13"
+content-hash = "ba54933d5082588e5634433abfe9661b8408d36125f7f233ec512d19bd8d0ef9"
