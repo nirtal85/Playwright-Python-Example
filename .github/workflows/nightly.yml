@@ -67,7 +67,7 @@ jobs:
             --group ${{ matrix.group }}
       - name: Upload test results and artifacts
         if: always()
-        uses: actions/upload-artifact@v4.4.3
+        uses: actions/upload-artifact@v4.5.0
         with:
           name: test-results-${{ matrix.group }}
           path: |
@@ -92,7 +92,7 @@ jobs:
             cp -r $dir/* merged-test-results/
           done
       - name: Upload Merged Test Results
-        uses: actions/upload-artifact@v4.4.3
+        uses: actions/upload-artifact@v4.5.0
         id: merged-artifact-upload
         with:
           name: merged-test-results
