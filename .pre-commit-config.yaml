@@ -30,7 +30,7 @@ repos:
         args: ["--verbose"]
       - id: check-renovate
   - repo: https://github.com/compilerla/conventional-pre-commit
-    rev: v3.6.0
+    rev: v4.0.0
     hooks:
       - id: conventional-pre-commit
         stages: [commit-msg]
@@ -59,7 +59,7 @@ repos:
       - id: isort
         args: [ '--settings-file', 'pyproject.toml' ]
   - repo: https://github.com/asottile/pyupgrade
-    rev: v3.19.0
+    rev: v3.19.1
     hooks:
       - id: pyupgrade
   - repo: https://github.com/codespell-project/codespell
