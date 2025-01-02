@@ -1,2 +1,0 @@
-"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","568","Login with valid credentials test","tests","Wed Jan 01 05:18:43 GMT 2025","passed","Wed Jan 01 05:18:44 GMT 2025","TestLogin","login_test","",""
