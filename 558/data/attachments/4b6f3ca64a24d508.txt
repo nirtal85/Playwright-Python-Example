@@ -1,0 +1,12 @@
+/home/runner/work/Playwright-Python-Example/Playwright-Python-Example/.venv/lib/python3.12/site-packages/playwright/driver/package/lib/server/chromium/crPage.js:497
+    this._firstNonInitialNavigationCommittedReject(new _errors.TargetClosedError());
+                                                   ^
+
+TargetClosedError: Target page, context or browser has been closed
+    at FrameSession.dispose (/home/runner/work/Playwright-Python-Example/Playwright-Python-Example/.venv/lib/python3.12/site-packages/playwright/driver/package/lib/server/chromium/crPage.js:497:52)
+    at CRPage.didClose (/home/runner/work/Playwright-Python-Example/Playwright-Python-Example/.venv/lib/python3.12/site-packages/playwright/driver/package/lib/server/chromium/crPage.js:162:60)
+    at CRBrowser._onDetachedFromTarget (/home/runner/work/Playwright-Python-Example/Playwright-Python-Example/.venv/lib/python3.12/site-packages/playwright/driver/package/lib/server/chromium/crBrowser.js:201:14)
+    at CRSession.emit (node:events:518:28)
+    at /home/runner/work/Playwright-Python-Example/Playwright-Python-Example/.venv/lib/python3.12/site-packages/playwright/driver/package/lib/server/chromium/crConnection.js:160:14
+
+Node.js v22.11.0
