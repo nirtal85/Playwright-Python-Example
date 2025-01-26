@@ -1,3 +1,0 @@
-"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","0","Test Accessibility with Default Counts","tests","Sat Jan 25 01:16:48 GMT 2025","broken","Sat Jan 25 01:16:48 GMT 2025","TestAccessibility","accesability_test","",""
-"","0","test_inventory_page[chromium-standard_user]","tests","Sat Jan 25 01:15:58 GMT 2025","broken","Sat Jan 25 01:15:58 GMT 2025","TestInventory","inventory_test","",""
