@@ -57,7 +57,9 @@ jobs:
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
         run: poetry install --no-interaction --no-root
       - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
+        run: |
+          PLAYWRIGHT_VERSION=$(grep -E '^playwright = "[^"]*"' pyproject.toml | sed -E 's/playwright = "([^"]*)".*$/\1/')
+          npx playwright@$PLAYWRIGHT_VERSION install --with-deps
       - name: Run Tests
         run: |
           source .venv/bin/activate
