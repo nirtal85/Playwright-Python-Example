@@ -21,15 +21,15 @@ axe-playwright-python = "0.1.4"
 playwright = "1.49.1"
 pytest = "8.3.4"
 pytest-base-url = "2.1.0"
-pytest-playwright = "0.6.2"
+pytest-playwright = "0.7.0"
 pytest-split = "0.10.0"
 python = "^3.11"
 requests = "2.32.3"
 
 [tool.poetry.group.dev.dependencies]
-black = "24.10.0"
-isort = "5.13.2"
-pre-commit = "4.0.1"
+black = "25.1.0"
+isort = "6.0.0"
+pre-commit = "4.1.0"
 
 [tool.pytest.ini_options]
 addopts = [
