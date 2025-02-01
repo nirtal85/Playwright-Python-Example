@@ -57,7 +57,9 @@ jobs:
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
         run: poetry install --no-interaction --no-root
       - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
+        run: |
+          PLAYWRIGHT_VERSION=$(grep -E '^playwright = "[^"]*"' pyproject.toml | sed -E 's/playwright = "([^"]*)".*$/\1/')
+          npx playwright@$PLAYWRIGHT_VERSION install --with-deps
       - name: Run Tests
         run: |
           source .venv/bin/activate
@@ -67,7 +69,7 @@ jobs:
             --group ${{ matrix.group }}
       - name: Upload test results and artifacts
         if: always()
-        uses: actions/upload-artifact@v4.5.0
+        uses: actions/upload-artifact@v4.6.0
         with:
           name: test-results-${{ matrix.group }}
           path: |
@@ -92,7 +94,7 @@ jobs:
             cp -r $dir/* merged-test-results/
           done
       - name: Upload Merged Test Results
-        uses: actions/upload-artifact@v4.5.0
+        uses: actions/upload-artifact@v4.6.0
         id: merged-artifact-upload
         with:
           name: merged-test-results
