@@ -19,6 +19,7 @@
 * [Test Automation - Efficient Element Selection with Playwright Python using Test IDs](https://www.linkedin.com/pulse/test-automation-efficient-element-selection-playwright-nir-tal-gcbmf/)
 * [Test Automation - Flexible Test Execution with Playwright Python and GitHub Actions](https://www.linkedin.com/pulse/test-automation-flexible-execution-playwright-python-nir-tal-38xkf/)
 * [Test Automation - Accelerating Playwright Python Tests with Parallel Execution in GitHub Actions](https://www.linkedin.com/pulse/test-automation-accelerating-playwright-python-tests-parallel-nir-tal-163of/)
+* [Test Automation - How to Sync Playwright Versions Between Python and GitHub Actions](https://www.linkedin.com/pulse/test-automation-how-sync-playwright-versions-between-nir-tal-vyjze/)
 
 ## 🛠️ Tech Stack
 
