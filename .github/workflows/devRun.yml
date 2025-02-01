@@ -26,7 +26,9 @@ jobs:
       - name: Install Dependencies
         run: poetry install --no-interaction --no-root
       - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
+        run: |
+          PLAYWRIGHT_VERSION=$(grep -E '^playwright = "[^"]*"' pyproject.toml | sed -E 's/playwright = "([^"]*)".*$/\1/')
+          npx playwright install@$PLAYWRIGHT_VERSION --with-deps
       - name: Test with pytest
         run: |
           source .venv/bin/activate
