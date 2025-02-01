@@ -28,7 +28,7 @@ jobs:
       - name: Install Playwright Browsers
         run: |
           PLAYWRIGHT_VERSION=$(grep -E '^playwright = "[^"]*"' pyproject.toml | sed -E 's/playwright = "([^"]*)".*$/\1/')
-          npx playwright install@$PLAYWRIGHT_VERSION --with-deps
+          npx playwright@$PLAYWRIGHT_VERSION install --with-deps
       - name: Test with pytest
         run: |
           source .venv/bin/activate
