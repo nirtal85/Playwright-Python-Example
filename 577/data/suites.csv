@@ -1,0 +1,4 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","168","Test Accessibility with Custom Counts","tests","Wed Feb 12 01:21:06 GMT 2025","passed","Wed Feb 12 01:21:06 GMT 2025","TestAccessibility","accesability_test","",""
+"","204","test_checkout_counter[chromium-standard_user]","tests","Wed Feb 12 01:21:06 GMT 2025","passed","Wed Feb 12 01:21:07 GMT 2025","TestCheckout","checkout_test","",""
+"","168","Test Accessibility with Default Counts","tests","Wed Feb 12 01:21:05 GMT 2025","failed","Wed Feb 12 01:21:05 GMT 2025","TestAccessibility","accesability_test","",""
