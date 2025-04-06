@@ -54,11 +54,10 @@ jobs:
           npx playwright@$PLAYWRIGHT_VERSION install --with-deps
       - name: Run Tests
         run: |
-          uv venv exec bash -c "
-            xvfb-run pytest ${{ github.event.inputs.pytest_command || '-m \"not devRun\"' }} \
-              --base-url ${{ vars.BASE_URL }} \
-              --splits ${{ github.event.inputs.parallelism || 2 }} \
-              --group ${{ matrix.group }}"
+          xvfb-run .venv/bin/python -m pytest ${{ github.event.inputs.pytest_command || '-m "not devRun"' }} \
+            --base-url ${{ vars.BASE_URL }} \
+            --splits ${{ github.event.inputs.parallelism || 2 }} \
+            --group ${{ matrix.group }}
       - name: Upload test results and artifacts
         if: always()
         uses: actions/upload-artifact@v4.6.2
