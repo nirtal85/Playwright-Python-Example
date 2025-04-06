@@ -54,8 +54,7 @@ jobs:
           npx playwright@$PLAYWRIGHT_VERSION install --with-deps
       - name: Run Tests
         run: |
-          source .venv/bin/activate
-          xvfb-run pytest ${{ github.event.inputs.pytest_command || '-m "not devRun"' }} \
+          xvfb-run .venv/bin/python -m pytest ${{ github.event.inputs.pytest_command || '-m "not devRun"' }} \
             --base-url ${{ vars.BASE_URL }} \
             --splits ${{ github.event.inputs.parallelism || 2 }} \
             --group ${{ matrix.group }}
