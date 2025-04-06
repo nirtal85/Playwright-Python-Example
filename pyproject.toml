@@ -1,35 +1,47 @@
 [build-system]
-build-backend = "poetry.core.masonry.api"
-requires = ["poetry-core"]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "playwright-python"
+version = "0.1.0"
+description = "Playwright Python example project with pytest and Allure report"
+authors = [{ name = "nirtal85", email = "nirt236@gmail.com" }]
+requires-python = "~=3.11"
+readme = "README.md"
+keywords = [
+    "playwright",
+    "automation",
+    "testing",
+    "web",
+]
+dependencies = [
+    "allure-pytest==2.13.5",
+    "axe-playwright-python==0.1.4",
+    "playwright==1.51.0",
+    "pytest==8.3.5",
+    "pytest-base-url==2.1.0",
+    "pytest-playwright==0.7.0",
+    "pytest-split==0.10.0",
+    "requests==2.32.3",
+]
+
+[dependency-groups]
+dev = [
+    "black==25.1.0",
+    "isort==6.0.1",
+    "pre-commit==4.2.0",
+]
 
 [tool.isort]
 profile = "black"
 skip = ["env", "venv"]
 
-[tool.poetry]
-authors = ["nirtal85 <nirt236@gmail.com>"]
-description = "Playwright Python example project with pytest and Allure report"
-keywords = ["playwright", "automation", "testing", "web"]
-name = "playwright-python"
-packages = [{include = "playwright_python"}]
-readme = "README.md"
-version = "0.1.0"
+[tool.hatch.build.targets.sdist]
+include = ["playwright_python"]
 
-[tool.poetry.dependencies]
-allure-pytest = "2.13.5"
-axe-playwright-python = "0.1.4"
-playwright = "1.51.0"
-pytest = "8.3.5"
-pytest-base-url = "2.1.0"
-pytest-playwright = "0.7.0"
-pytest-split = "0.10.0"
-python = "^3.11"
-requests = "2.32.3"
-
-[tool.poetry.group.dev.dependencies]
-black = "25.1.0"
-isort = "6.0.1"
-pre-commit = "4.2.0"
+[tool.hatch.build.targets.wheel]
+include = ["playwright_python"]
 
 [tool.pytest.ini_options]
 addopts = [
