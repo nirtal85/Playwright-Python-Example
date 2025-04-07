@@ -54,7 +54,7 @@ addopts = [
   "tms:https://{}",
   "-ra",
   "--color=yes",
-  "--browser-channel=chrome",
+  "--browser=chromium",
   "--headed",
   "--video=retain-on-failure",
   "--tracing=retain-on-failure"
