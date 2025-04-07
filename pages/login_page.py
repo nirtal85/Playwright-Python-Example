@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from typing import Union
 
 import allure
 from playwright.sync_api import Page
@@ -18,7 +19,7 @@ class LoginPage:
         self.error_message = page.get_by_test_id("error")
 
     @allure.step("Login with username {username} and password {password}")
-    def login(self, username: User | str, password: str):
+    def login(self, username: Union[User, str], password: str):
         if hasattr(username, "value"):
             self.user_name_field.fill(username.value)
         else:

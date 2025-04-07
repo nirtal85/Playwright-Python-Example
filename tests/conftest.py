@@ -48,7 +48,7 @@ def axe_playwright():
 
 
 @pytest.fixture(scope="function")
-def browser_context_args(browser_context_args: dict, base_url: str, request: SubRequest):
+def browser_context_args(browser_context_args: dict, base_url: str, request: SubRequest) -> dict:
     """This fixture allows setting browser context arguments for Playwright.
 
     Args:
@@ -86,7 +86,7 @@ def browser_context_args(browser_context_args: dict, base_url: str, request: Sub
 
 
 @pytest.fixture(scope="session")
-def browser_type_launch_args(browser_type_launch_args: dict, playwright: Playwright):
+def browser_type_launch_args(browser_type_launch_args: dict, playwright: Playwright) -> dict:
     """Fixture to set browser launch arguments.
 
     This fixture updates the browser launch arguments to start the browser maximized
