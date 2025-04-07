@@ -1,6 +1,5 @@
 import json
 from collections import Counter
-from typing import Dict
 
 import allure
 from axe_playwright_python.sync_playwright import Axe
@@ -8,12 +7,11 @@ from playwright.sync_api import Page
 
 
 class AxeHelper:
-
     def __init__(self, axe: Axe):
         self.axe = axe
 
     def check_accessibility(
-        self, page: Page, maximum_allowed_violations_by_impact: Dict[str, int] = None
+        self, page: Page, maximum_allowed_violations_by_impact: dict[str, int] = None
     ) -> None:
         """Checks accessibility of the page using playwright axe.
 
@@ -33,15 +31,12 @@ class AxeHelper:
             }
         results = self.axe.run(page)
         violations_count = dict(
-            Counter(
-                [violation["impact"] for violation in results.response["violations"]]
-            )
+            Counter([violation["impact"] for violation in results.response["violations"]])
         )
         if violations_exceeded := {
             impact_level: violation_count
             for impact_level, violation_count in violations_count.items()
-            if violation_count
-            > maximum_allowed_violations_by_impact.get(impact_level, 0)
+            if violation_count > maximum_allowed_violations_by_impact.get(impact_level, 0)
         }:
             allure.attach(
                 body=json.dumps(results.response["violations"], indent=4),

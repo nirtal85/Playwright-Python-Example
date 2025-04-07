@@ -47,7 +47,7 @@ jobs:
       - name: Create venv & install dependencies
         run: |
           uv venv
-          uv pip sync uv.lock
+          uv sync --all-extras --dev
       - name: Install Playwright Browsers
         run: |
           PLAYWRIGHT_VERSION=$(grep -E '^playwright = "[^"]*"' pyproject.toml | sed -E 's/playwright = "([^"]*)".*$/\1/')

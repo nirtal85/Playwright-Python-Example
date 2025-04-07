@@ -1,5 +1,3 @@
-from typing import Dict
-
 import allure
 import pytest
 import requests
@@ -27,6 +25,7 @@ def goto(page: Page, request: SubRequest):
 
     Example:
         @pytest.mark.parametrize('browser_context_args', ["standard_user"], indirect=True)
+
     """
     if request.getfixturevalue("browser_context_args").get("storage_state"):
         page.goto("/inventory.html")
@@ -43,27 +42,29 @@ def axe_playwright():
 
     Returns:
         AxeHelper: An instance of AxeHelper with Axe initialized.
+
     """
-    yield AxeHelper(Axe())
+    return AxeHelper(Axe())
 
 
 @pytest.fixture(scope="function")
-def browser_context_args(
-    browser_context_args: Dict, base_url: str, request: SubRequest
-):
+def browser_context_args(browser_context_args: dict, base_url: str, request: SubRequest) -> dict:
     """This fixture allows setting browser context arguments for Playwright.
 
     Args:
         browser_context_args (dict): Base browser context arguments.
         request (SubRequest): Pytest request object to get the 'browser_context_args' fixture value.
         base_url (str): The base URL for the application under test.
+
     Returns:
         dict: Updated browser context arguments.
+
     See Also:
         https://playwright.dev/python/docs/api/class-browser#browser-new-contex
 
     Returns:
         dict: Updated browser context arguments.
+
     """
     context_args = {
         **browser_context_args,
@@ -85,7 +86,7 @@ def browser_context_args(
 
 
 @pytest.fixture(scope="session")
-def browser_type_launch_args(browser_type_launch_args: Dict, playwright: Playwright):
+def browser_type_launch_args(browser_type_launch_args: dict, playwright: Playwright) -> dict:
     """Fixture to set browser launch arguments.
 
     This fixture updates the browser launch arguments to start the browser maximized
@@ -103,6 +104,7 @@ def browser_type_launch_args(browser_type_launch_args: Dict, playwright: Playwri
 
     See Also:
         https://playwright.dev/python/docs/api/class-browsertype#browser-type-launch
+
     """
     playwright.selectors.set_test_id_attribute("data-test")
     return {**browser_type_launch_args, "args": ["--start-maximized"]}
@@ -113,6 +115,7 @@ def get_public_ip() -> str:
 
     Returns:
         str: Public IP address.
+
     """
     return requests.get(
         "http://checkip.amazonaws.com",
@@ -129,6 +132,7 @@ def attach_playwright_results(page: Page, request: FixtureRequest):
     Args:
         page (Page): Playwright page object.
         request: Pytest request object.
+
     """
     yield
     if request.node.rep_call.failed:
@@ -158,6 +162,7 @@ def pytest_runtest_makereport(item: Item):
 
     Yields:
         Outcome of the test execution.
+
     """
     outcome = yield
     rep = outcome.get_result()
