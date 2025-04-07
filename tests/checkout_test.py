@@ -5,9 +5,7 @@ from enums.User import User
 
 
 class TestCheckout:
-    @pytest.mark.parametrize(
-        "browser_context_args", [User.STANDARD_USER], indirect=True
-    )
+    @pytest.mark.parametrize("browser_context_args", [User.STANDARD_USER], indirect=True)
     def test_checkout_counter(self, browser_context_args, page: Page):
         page.evaluate("localStorage.setItem('cart-contents', '[4,0]');")
         page.reload()

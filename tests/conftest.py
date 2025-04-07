@@ -48,9 +48,7 @@ def axe_playwright():
 
 
 @pytest.fixture(scope="function")
-def browser_context_args(
-    browser_context_args: dict, base_url: str, request: SubRequest
-):
+def browser_context_args(browser_context_args: dict, base_url: str, request: SubRequest):
     """This fixture allows setting browser context arguments for Playwright.
 
     Args:

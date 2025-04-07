@@ -31,15 +31,12 @@ class AxeHelper:
             }
         results = self.axe.run(page)
         violations_count = dict(
-            Counter(
-                [violation["impact"] for violation in results.response["violations"]]
-            )
+            Counter([violation["impact"] for violation in results.response["violations"]])
         )
         if violations_exceeded := {
             impact_level: violation_count
             for impact_level, violation_count in violations_count.items()
-            if violation_count
-            > maximum_allowed_violations_by_impact.get(impact_level, 0)
+            if violation_count > maximum_allowed_violations_by_impact.get(impact_level, 0)
         }:
             allure.attach(
                 body=json.dumps(results.response["violations"], indent=4),
