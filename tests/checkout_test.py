@@ -5,7 +5,6 @@ from enums.User import User
 
 
 class TestCheckout:
-
     @pytest.mark.parametrize(
         "browser_context_args", [User.STANDARD_USER], indirect=True
     )

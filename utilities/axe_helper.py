@@ -1,6 +1,5 @@
 import json
 from collections import Counter
-from typing import Dict
 
 import allure
 from axe_playwright_python.sync_playwright import Axe
@@ -8,12 +7,11 @@ from playwright.sync_api import Page
 
 
 class AxeHelper:
-
     def __init__(self, axe: Axe):
         self.axe = axe
 
     def check_accessibility(
-        self, page: Page, maximum_allowed_violations_by_impact: Dict[str, int] = None
+        self, page: Page, maximum_allowed_violations_by_impact: dict[str, int] = None
     ) -> None:
         """Checks accessibility of the page using playwright axe.
 

@@ -1,47 +1,46 @@
 [build-system]
-requires = ["hatchling"]
 build-backend = "hatchling.build"
-
-[project]
-name = "playwright-python"
-version = "0.1.0"
-description = "Playwright Python example project with pytest and Allure report"
-authors = [{ name = "nirtal85", email = "nirt236@gmail.com" }]
-requires-python = "~=3.11"
-readme = "README.md"
-keywords = [
-    "playwright",
-    "automation",
-    "testing",
-    "web",
-]
-dependencies = [
-    "allure-pytest==2.13.5",
-    "axe-playwright-python==0.1.4",
-    "playwright==1.51.0",
-    "pytest==8.3.5",
-    "pytest-base-url==2.1.0",
-    "pytest-playwright==0.7.0",
-    "pytest-split==0.10.0",
-    "requests==2.32.3",
-]
+requires = ["hatchling"]
 
 [dependency-groups]
 dev = [
-    "black==25.1.0",
-    "isort==6.0.1",
-    "pre-commit==4.2.0",
+  "ruff==0.11.4",
+  "pre-commit==4.2.0"
 ]
 
-[tool.isort]
-profile = "black"
-skip = ["env", "venv"]
+[project]
+authors = [{name = "nirtal85", email = "nirt236@gmail.com"}]
+dependencies = [
+  "allure-pytest==2.13.5",
+  "axe-playwright-python==0.1.4",
+  "playwright==1.51.0",
+  "pytest==8.3.5",
+  "pytest-base-url==2.1.0",
+  "pytest-playwright==0.7.0",
+  "pytest-split==0.10.0",
+  "requests==2.32.3"
+]
+description = "Playwright Python example project with pytest and Allure report"
+keywords = [
+  "playwright",
+  "automation",
+  "testing",
+  "web"
+]
+name = "playwright-python"
+readme = "README.md"
+requires-python = "~=3.11"
+version = "0.1.0"
 
 [tool.hatch.build.targets.sdist]
 include = ["playwright_python"]
 
 [tool.hatch.build.targets.wheel]
 include = ["playwright_python"]
+
+[tool.isort]
+profile = "black"
+skip = ["env", "venv"]
 
 [tool.pytest.ini_options]
 addopts = [
@@ -68,3 +67,18 @@ log_cli_level = "INFO"
 markers = [
   "devRun: marks tests that run before merge to the main branch"
 ]
+
+[tool.ruff]
+exclude = [".venv", "env"]
+ignore = [
+  "D203",  # One blank line required before class docstring (conflicts with D211)
+  "D213",  # Multi-line docstring summary should start at the second line
+  "COM812"
+]
+line-length = 100
+select = ["ALL"]
+target-version = "py311"
+
+[tool.ruff.format]
+docstring-code-format = true
+quote-style = "double"
