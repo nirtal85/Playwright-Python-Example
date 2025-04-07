@@ -32,7 +32,7 @@ jobs:
     needs: setup-matrix
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.51-jammy
+      image: mcr.microsoft.com/playwright:v1.51.0-jammy
     strategy:
       fail-fast: false
       matrix: ${{ fromJson(needs.setup-matrix.outputs.matrix) }}
