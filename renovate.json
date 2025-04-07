@@ -11,5 +11,23 @@
   },
   "schedule": [
     "monthly"
+  ],
+  "regexManagers": [
+    {
+      "fileMatch": ["^.github/workflows/.*\\.ya?ml$"],
+      "matchStrings": [
+        "mcr\\.microsoft\\.com/playwright:v(?<version>\\d+\\.\\d+\\.\\d+)-jammy"
+      ],
+      "depNameTemplate": "playwright-docker",
+      "datasourceTemplate": "docker"
+    }
+  ],
+  "packageRules": [
+    {
+      "matchPackageNames": ["playwright", "playwright-docker"],
+      "groupName": "playwright version sync",
+      "versioning": "semver",
+      "allowedVersions": "/^\\d+\\.\\d+\\.\\d+$/"
+    }
   ]
 }
