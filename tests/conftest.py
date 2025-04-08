@@ -70,6 +70,7 @@ def browser_context_args(browser_context_args: dict, base_url: str, request: Sub
         **browser_context_args,
         "no_viewport": True,
         "user_agent": Constants.AUTOMATION_USER_AGENT,
+        "permissions": ["geolocation", "microphone", "camera"],
     }
 
     if hasattr(request, "param"):
@@ -107,7 +108,24 @@ def browser_type_launch_args(browser_type_launch_args: dict, playwright: Playwri
 
     """
     playwright.selectors.set_test_id_attribute("data-test")
-    return {**browser_type_launch_args, "args": ["--start-maximized"]}
+    return {
+        **browser_type_launch_args,
+        "headless": False,
+        "args": [
+            "--start-maximized",
+            "--allow-file-access-from-files",
+            "--use-fake-device-for-media-stream",
+            "--use-fake-ui-for-media-stream",
+            "--hide-scrollbars",
+            "--disable-features=IsolateOrigins,site-per-process,VizDisplayCompositor,SidePanelPinning,OptimizationGuideModelDownloading,OptimizationHintsFetching,OptimizationTargetPrediction,OptimizationHints",
+            "--disable-popup-blocking",
+            "--disable-search-engine-choice-screen",
+            "--disable-infobars",
+            "--disable-dev-shm-usage",
+            "--disable-notifications",
+            "--disable-blink-features=AutomationControlled"
+        ]
+    }
 
 
 def get_public_ip() -> str:
