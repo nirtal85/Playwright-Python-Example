@@ -34,6 +34,10 @@
 | [pytest-split](https://pypi.org/project/pytest-split/)                   | Pytest plugin which splits the test suite to equally sized sub suites based on test execution time. |
 | [requests](https://pypi.org/project/requests/)                           | Versatile library for making HTTP requests in Python                                                |
 
+## 🌐 Browser Testing
+
+This project is tested with [BrowserStack](https://www.browserstack.com), enabling cross-browser and mobile testing on real devices in the cloud.
+
 ## ⚙️ Setup Instructions
 
 ### Clone the project
