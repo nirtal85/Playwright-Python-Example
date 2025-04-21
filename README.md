@@ -7,6 +7,12 @@
 [![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 
+<p align="center">
+  <a href="https://automation.co.il/%d7%a7%d7%95%d7%a8%d7%a1-%d7%90%d7%95%d7%98%d7%95%d7%9e%d7%a6%d7%99%d7%94-%d7%a4%d7%99%d7%99%d7%aa%d7%95%d7%9f-python-automation/">
+    <img src="resources/images/automation_college_playwright_course.jpeg" alt="Automation College - Playwright Python Course" />
+  </a>
+</p>
+
 ## 📃 Articles written about this project
 
 * [Test Automation - How To Use Custom User Agent in Selenium Python or Playwright Python to Avoid Security Bots](https://www.linkedin.com/pulse/test-automation-how-use-custom-user-agent-selenium-python-nir-tal-lyqbf/)
