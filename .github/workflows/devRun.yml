@@ -6,6 +6,7 @@ on:
     paths:
       - '**/*.py'
       - '**/*.toml'
+      - '**/*.lock'
       - '.github/workflows/devRun.yml'
 
 jobs:
