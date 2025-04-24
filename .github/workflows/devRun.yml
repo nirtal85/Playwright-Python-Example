@@ -3,6 +3,10 @@ name: Pre merge test
 on:
   pull_request:
     branches: [ main ]
+    paths:
+      - '**/*.py'
+      - '**/*.toml'
+      - '.github/workflows/devRun.yml'
 
 jobs:
   merge_test:
