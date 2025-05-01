@@ -4,16 +4,16 @@ requires = ["hatchling"]
 
 [dependency-groups]
 dev = [
-  "ruff==0.11.4",
+  "ruff==0.11.8",
   "pre-commit==4.2.0"
 ]
 
 [project]
 authors = [{name = "nirtal85", email = "nirt236@gmail.com"}]
 dependencies = [
-  "allure-pytest==2.13.5",
+  "allure-pytest==2.14.1",
   "axe-playwright-python==0.1.4",
-  "playwright==1.51.0",
+  "playwright==1.52.0",
   "pytest==8.3.5",
   "pytest-base-url==2.1.0",
   "pytest-playwright==0.7.0",
