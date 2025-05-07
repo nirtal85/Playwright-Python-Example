@@ -16,6 +16,10 @@ on:
         default: 2
         type: number
 
+permissions:
+  contents: write
+  pages: write
+
 jobs:
   setup-matrix:
     runs-on: ubuntu-latest
@@ -113,7 +117,7 @@ jobs:
         if: contains(needs.*.result, 'failure')
         run: echo ARTIFACT_URL=${{ steps.merged-artifact-upload.outputs.artifact-url }} >> environment.properties
       - name: Generate Allure Report
-        uses: simple-elf/allure-report-action@master
+        uses: simple-elf/allure-report-action@v1.12
         if: always()
         id: allure-report
         with:
