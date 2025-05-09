@@ -4,7 +4,7 @@ from typing import Union
 import allure
 from playwright.sync_api import Page
 
-from enums import User
+from src.enums import User
 
 
 @allure.severity(allure.severity_level.CRITICAL)
