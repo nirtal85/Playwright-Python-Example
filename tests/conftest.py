@@ -6,8 +6,8 @@ from _pytest.nodes import Item
 from axe_playwright_python.sync_playwright import Axe
 from playwright.sync_api import Page, Playwright
 
-from utilities.axe_helper import AxeHelper
-from utilities.constants import Constants
+from src.utilities.axe_helper import AxeHelper
+from src.utilities.constants import Constants
 
 
 @pytest.fixture(scope="function", autouse=True)

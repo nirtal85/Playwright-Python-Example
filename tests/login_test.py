@@ -2,8 +2,8 @@ import allure
 import pytest
 from playwright.sync_api import Page, expect
 
-from enums.User import User
-from pages.login_page import LoginPage
+from src.enums.User import User
+from src.pages.login_page import LoginPage
 
 
 class TestLogin:
@@ -13,7 +13,7 @@ class TestLogin:
 
     @pytest.mark.devRun
     @allure.title("Login with valid credentials test")
-    def test_valid_login(self, base_url, page: Page):
+    def test_valid_login(self, base_url, page: Page) -> None:
         self.login_page.login(User.STANDARD_USER, "secret_sauce")
         expect(page).to_have_url(f"{base_url}inventory.html")
 
@@ -34,6 +34,6 @@ class TestLogin:
         ids=["invalid_password", "locked_user"],
     )
     @allure.title("Login with invalid credentials test")
-    def test_login_error(self, page: Page, username: str, password: str, expected_error: str):
+    def test_login_error(self, page: Page, username: str, password: str, expected_error: str) -> None:
         self.login_page.login(username, password)
         expect(self.login_page.error_message).to_have_text(expected_error)

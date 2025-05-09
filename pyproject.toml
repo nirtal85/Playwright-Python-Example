@@ -1,7 +1,3 @@
-[build-system]
-build-backend = "hatchling.build"
-requires = ["hatchling"]
-
 [dependency-groups]
 dev = [
   "ruff==0.11.8",
@@ -9,7 +5,6 @@ dev = [
 ]
 
 [project]
-authors = [{name = "nirtal85", email = "nirt236@gmail.com"}]
 dependencies = [
   "allure-pytest==2.14.1",
   "axe-playwright-python==0.1.4",
@@ -21,28 +16,12 @@ dependencies = [
   "requests==2.32.3"
 ]
 description = "Playwright Python example project with pytest and Allure report"
-keywords = [
-  "playwright",
-  "automation",
-  "testing",
-  "web"
-]
 name = "playwright-python"
-readme = "README.md"
 requires-python = "~=3.11"
 version = "0.1.0"
 
-[tool.hatch.build.targets.sdist]
-include = ["playwright_python"]
-
-[tool.hatch.build.targets.wheel]
-include = ["playwright_python"]
-
-[tool.isort]
-profile = "black"
-skip = ["env", "venv"]
-
 [tool.pytest.ini_options]
+pythonpath = ["src"]
 addopts = [
   "--clean-alluredir",
   "--alluredir=allure-results",
