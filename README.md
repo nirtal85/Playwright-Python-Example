@@ -55,11 +55,12 @@ cd playwright-python
 
 ### Create and activate a virtual environment then Install project dependencies
 
-#### For Windows:
+#### PowerShell installation in windows:
 ```bash
-pip install uv
-uv venv
-.\env\Scripts\activate
+python -m uv venv
+.venv\Scripts\Activate.ps1
+python -m ensurepip --upgrade
+python -m pip install uv
 uv sync --all-extras --dev
 ```
 
