@@ -34,6 +34,8 @@ class TestLogin:
         ids=["invalid_password", "locked_user"],
     )
     @allure.title("Login with invalid credentials test")
-    def test_login_error(self, page: Page, username: str, password: str, expected_error: str) -> None:
+    def test_login_error(
+        self, page: Page, username: str, password: str, expected_error: str
+    ) -> None:
         self.login_page.login(username, password)
         expect(self.login_page.error_message).to_have_text(expected_error)

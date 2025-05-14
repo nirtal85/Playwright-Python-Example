@@ -123,8 +123,8 @@ def browser_type_launch_args(browser_type_launch_args: dict, playwright: Playwri
             "--disable-infobars",
             "--disable-dev-shm-usage",
             "--disable-notifications",
-            "--disable-blink-features=AutomationControlled"
-        ]
+            "--disable-blink-features=AutomationControlled",
+        ],
     }
 
 

@@ -157,6 +157,6 @@ pre-commit run --all-files
 
 If you find this project helpful, you can support my work by buying me a coffee:
 
-<p><a href="https://www.buymeacoffee.com/nirtal"> 
+<p><a href="https://www.buymeacoffee.com/nirtal">
 <img align="left" src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="50" width="210" alt="Buy Me A Coffee" />
 </a></p><br><br>

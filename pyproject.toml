@@ -21,7 +21,6 @@ requires-python = "~=3.11"
 version = "0.1.0"
 
 [tool.pytest.ini_options]
-pythonpath = ["src"]
 addopts = [
   "--clean-alluredir",
   "--alluredir=allure-results",
@@ -46,6 +45,7 @@ log_cli_level = "INFO"
 markers = [
   "devRun: marks tests that run before merge to the main branch"
 ]
+pythonpath = ["src"]
 
 [tool.ruff]
 exclude = [".venv", "env"]
