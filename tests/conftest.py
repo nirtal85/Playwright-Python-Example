@@ -70,7 +70,7 @@ def browser_context_args(browser_context_args: dict, base_url: str, request: Sub
         **browser_context_args,
         "no_viewport": True,
         "user_agent": Constants.AUTOMATION_USER_AGENT,
-        "permissions": ["geolocation", "microphone", "camera"],
+        "permissions": ["geolocation", "microphone", "camera", "clipboard-read", "clipboard-write"],
     }
 
     if hasattr(request, "param"):
