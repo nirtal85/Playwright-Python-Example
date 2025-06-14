@@ -15,17 +15,17 @@
 
 ## 📃 Articles written about this project
 
-* [Test Automation - How To Use Custom User Agent in Selenium Python or Playwright Python to Avoid Security Bots](https://www.linkedin.com/pulse/test-automation-how-use-custom-user-agent-selenium-python-nir-tal-lyqbf/)
-* [Test Automation - How to Use Dynamic Base URLs with Selenium And Playwright Python in GitHub Actions](https://www.linkedin.com/pulse/test-automation-how-use-dynamic-base-urls-selenium-playwright-tal-klq5f/)
-* [Test Automation - Maximizing Browser Window With Playwright Python And Pytest](https://www.linkedin.com/pulse/test-automation-maximizing-browser-window-playwright-nir-tal-c24hf/)
-* [Test Automation - How to Bypass Re-Login With Playwright Python And Pytest](https://www.linkedin.com/pulse/test-automation-how-bypass-re-login-playwright-python-nir-tal-cfnnf/)
-* [Test Automation - How To Perform Automated Accessibility Checks Using Playwright Python And Axe](https://www.linkedin.com/pulse/how-perform-automated-accessibility-tests-using-playwright-nir-tal-hupxf/)
-* [Test Automation - How To Link Playwright Traces and Videos to Allure Report using GitHub Actions](https://www.linkedin.com/pulse/test-automation-how-link-playwright-traces-videos-allure-nir-tal-vkm2f/)
-* [Test Automation - Speeding Up Testing with Playwright Python using Local Storage](https://www.linkedin.com/pulse/test-automation-speeding-up-testing-playwright-python-nir-tal-gmmtf/)
-* [Test Automation - Efficient Element Selection with Playwright Python using Test IDs](https://www.linkedin.com/pulse/test-automation-efficient-element-selection-playwright-nir-tal-gcbmf/)
-* [Test Automation - Flexible Test Execution with Playwright Python and GitHub Actions](https://www.linkedin.com/pulse/test-automation-flexible-execution-playwright-python-nir-tal-38xkf/)
-* [Test Automation - Accelerating Playwright Python Tests with Parallel Execution in GitHub Actions](https://www.linkedin.com/pulse/test-automation-accelerating-playwright-python-tests-parallel-nir-tal-163of/)
-* [Test Automation - How to Sync Playwright Versions Between Python and GitHub Actions](https://www.linkedin.com/pulse/test-automation-how-sync-playwright-versions-between-nir-tal-vyjze/)
+* [Test Automation - How To Use Custom User Agent in Selenium Python or Playwright Python to Avoid Security Bots](https://www.test-shift.com/en/posts/test-automation-how-to-use-custom-user-agent-in-selenium-python-or-playwright-python-to-avoid-security-bots)
+* [Test Automation - How to Use Dynamic Base URLs with Selenium And Playwright Python in GitHub Actions](https://www.test-shift.com/en/posts/test-automation-how-to-use-dynamic-base-urls-with-selenium-and-playwright-python-in-github-actions)
+* [Test Automation - Maximizing Browser Window With Playwright Python And Pytest](https://www.test-shift.com/en/posts/test-automation-maximizing-browser-window-with-playwright-python-and-pytest)
+* [Test Automation - How to Bypass Re-Login With Playwright Python And Pytest](https://www.test-shift.com/en/posts/test-automation-how-to-bypass-re-login-with-playwright-python-and-pytest)
+* [Test Automation - How To Perform Automated Accessibility Checks Using Playwright Python And Axe](https://www.test-shift.com/en/posts/test-automation-how-to-perform-automated-accessibility-checks-using-playwright-python-and-axe)
+* [Test Automation - How To Link Playwright Traces and Videos to Allure Report using GitHub Actions](https://www.test-shift.com/en/posts/test-automation-how-to-link-playwright-traces-and-videos-to-allure-report-using-github-actions)
+* [Test Automation - Speeding Up Testing with Playwright Python using Local Storage](https://www.test-shift.com/en/posts/test-automation-speeding-up-testing-with-playwright-python-using-local-storage)
+* [Test Automation - Efficient Element Selection with Playwright Python using Test IDs](https://www.test-shift.com/en/posts/test-automation-efficient-element-selection-with-playwright-python-using-test-ids)
+* [Test Automation - Flexible Test Execution with Playwright Python and GitHub Actions](https://www.test-shift.com/en/posts/test-automation-flexible-test-execution-with-playwright-python-and-github-actions)
+* [Test Automation - Accelerating Playwright Python Tests with Parallel Execution in GitHub Actions](https://www.test-shift.com/en/posts/test-automation-accelerating-playwright-python-tests-with-parallel-execution-in-github-actions)
+* [Test Automation - How to Sync Playwright Versions Between Python and GitHub Actions](https://www.test-shift.com/en/posts/test-automation-how-to-sync-playwright-versions-between-python-and-github-actions)
 
 ## 🛠️ Tech Stack
 
