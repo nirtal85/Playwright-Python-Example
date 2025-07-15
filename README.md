@@ -26,6 +26,7 @@
 * [Test Automation - Flexible Test Execution with Playwright Python and GitHub Actions](https://www.test-shift.com/posts/test-automation-flexible-test-execution-with-playwright-python-and-github-actions)
 * [Test Automation - Accelerating Playwright Python Tests with Parallel Execution in GitHub Actions](https://www.test-shift.com/posts/test-automation-accelerating-playwright-python-tests-with-parallel-execution-in-github-actions)
 * [Test Automation - How to Sync Playwright Versions Between Python and GitHub Actions](https://www.test-shift.com/posts/test-automation-how-to-sync-playwright-versions-between-python-and-github-actions)
+* [From Open Source to Industry Sponsorship: The TestShift Journey with BrowserStack](https://www.test-shift.com/posts/from-open-source-to-enterprise-sponsorship-the-testshift-journey-with-browserstack)
 
 ## 🛠️ Tech Stack
 
