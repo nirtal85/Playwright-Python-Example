@@ -36,18 +36,18 @@ jobs:
     needs: setup-matrix
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.55.0
+      image: mcr.microsoft.com/playwright:v1.56.1
     strategy:
       fail-fast: false
       matrix: ${{ fromJson(needs.setup-matrix.outputs.matrix) }}
     steps:
       - uses: actions/checkout@v5
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
-          python-version: '3.13'
+          python-version: '3.14'
       - name: Set up uv
-        uses: astral-sh/setup-uv@v6
+        uses: astral-sh/setup-uv@v7
         with:
           enable-cache: true
       - name: Create venv & install dependencies
