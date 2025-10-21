@@ -18,13 +18,13 @@ jobs:
     timeout-minutes: 15
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.55.0
+      image: mcr.microsoft.com/playwright:v1.56.1
     steps:
       - uses: actions/checkout@v5
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
-          python-version: '3.14'
+          python-version: '3.13'
       - name: Set up uv
         uses: astral-sh/setup-uv@v7
         with:
