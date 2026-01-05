@@ -1,0 +1,7 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","267","Test Accessibility with Default Counts","tests","Mon Jan 05 02:00:10 UTC 2026","failed","Mon Jan 05 02:00:11 UTC 2026","TestAccessibility","accesability_test","",""
+"","42","test_inventory_page[chromium-standard_user]","tests","Mon Jan 05 02:00:08 UTC 2026","passed","Mon Jan 05 02:00:08 UTC 2026","TestInventory","inventory_test","",""
+"","137","Login with invalid credentials test","tests","Mon Jan 05 02:00:09 UTC 2026","passed","Mon Jan 05 02:00:09 UTC 2026","TestLogin","login_test","",""
+"","192","test_checkout_counter[chromium-standard_user]","tests","Mon Jan 05 02:00:12 UTC 2026","passed","Mon Jan 05 02:00:12 UTC 2026","TestCheckout","checkout_test","",""
+"","131","Login with invalid credentials test","tests","Mon Jan 05 02:00:08 UTC 2026","passed","Mon Jan 05 02:00:08 UTC 2026","TestLogin","login_test","",""
+"","261","Test Accessibility with Custom Counts","tests","Mon Jan 05 02:00:11 UTC 2026","passed","Mon Jan 05 02:00:12 UTC 2026","TestAccessibility","accesability_test","",""
