@@ -1,6 +1,6 @@
 <div align="center">
 
-<img height="120" src="https://cdn.simpleicons.org/playwright/2EAD33"/>
+<img height="120" src="https://playwright.dev/img/playwright-logo.svg" alt="Playwright Logo"/>
 
 # Enterprise-Grade Playwright Python Architecture
 ### The Ultimate Boilerplate for Scalable, Robust, and Modern UI Automation
