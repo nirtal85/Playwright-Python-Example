@@ -162,6 +162,6 @@ If this architecture helped you solve a problem or save time, consider supportin
 
 <br />
 
-Visit TestShift.com for more Architectural Insights
+[Visit TestShift.com for more Architectural Insights](https://www.test-shift.com)
 
 </div>
