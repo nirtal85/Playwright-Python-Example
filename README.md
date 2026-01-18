@@ -126,21 +126,10 @@ pytest -m sanity
 
 ## 📊 Results, Traces & Debugging
 
-We use Allure for reporting and Playwright Traces for debugging.
-
-Viewing Reports Locally
-Windows (via Scoop):
+We use Allure for reporting. To generate and open the report locally:
 
 ```bash
-scoop install allure
-allure serve allure-results
-```
-
-Mac (via Brew):
-
-```bash
-brew install allure
-allure serve allure-results
+npx -y allure generate allure-results --output allure-report --open
 ```
 
 👉 [See a Live Example of the Report Here](https://nirtal85.github.io/Playwright-Python-Example/)
