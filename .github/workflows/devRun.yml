@@ -65,7 +65,6 @@ jobs:
             echo GIT_COMMIT_MESSAGE="$(git show -s --format=%s HEAD)"
             echo GIT_COMMIT_AUTHOR_NAME="$(git show -s --format='%ae' HEAD)"
             echo GIT_COMMIT_TIME="$(git show -s --format=%ci HEAD)"
-            echo CHROME_VERSION="$(google-chrome --product-version 2>/dev/null || true)"
           } >> environment.properties
       - name: Generate Allure report
         if: always()
