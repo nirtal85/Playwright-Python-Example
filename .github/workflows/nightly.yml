@@ -6,19 +6,20 @@ on:
   workflow_dispatch:
     inputs:
       pytest_command:
-        description: 'Custom pytest command'
+        description: "Custom pytest command"
         required: true
         default: '-m "not devRun"'
         type: string
       parallelism:
-        description: 'Number of machines to split tests'
+        description: "Number of machines to split tests"
         required: false
         default: 2
         type: number
 
 permissions:
-  contents: write
+  contents: read
   pages: write
+  id-token: write
 
 jobs:
   setup-matrix:
@@ -41,11 +42,12 @@ jobs:
       fail-fast: false
       matrix: ${{ fromJson(needs.setup-matrix.outputs.matrix) }}
     steps:
-      - uses: actions/checkout@v5
+      - name: Checkout
+        uses: actions/checkout@v5
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
-          python-version: '3.13'
+          python-version: "3.13"
       - name: Set up uv
         uses: astral-sh/setup-uv@v7
         with:
@@ -55,79 +57,94 @@ jobs:
           uv venv
           uv sync --all-extras --dev
       - name: Run Tests
-        run: |
-          xvfb-run .venv/bin/python -m pytest ${{ github.event.inputs.pytest_command || '-m "not devRun"' }} \
-            --base-url ${{ vars.BASE_URL }} \
-            --splits ${{ github.event.inputs.parallelism || 2 }} \
-            --group ${{ matrix.group }}
-      - name: Upload test results and artifacts
+        run: >
+          xvfb-run .venv/bin/python -m pytest
+          ${{ github.event.inputs.pytest_command || '-m "not devRun"' }}
+          --base-url ${{ vars.BASE_URL }}
+          --splits ${{ github.event.inputs.parallelism || 2 }}
+          --group ${{ matrix.group }}
+      - name: Upload shard test artifacts (test-results + allure-results)
         if: always()
-        uses: actions/upload-artifact@v4.6.2
+        uses: actions/upload-artifact@v5
         with:
-          name: test-results-${{ matrix.group }}
+          name: shard-${{ matrix.group }}
           path: |
             test-results/
-            allure-results
+            allure-results/
           retention-days: 7
 
-  merge-reports:
+  build-report:
     needs: nightly-test
     if: always()
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
-      - name: Download all test results
+      - name: Checkout
+        uses: actions/checkout@v5
+      - name: Download all Allure results into allure-results
+        if: always()
         uses: actions/download-artifact@v5
         with:
+          pattern: shard-*
           path: artifacts
-      - name: Merge test results
+          merge-multiple: false
+      - name: Consolidate allure-results
+        if: always()
+        run: |
+          mkdir -p allure-results
+          find artifacts -type d -name "allure-results" -print0 | while IFS= read -r -d '' d; do
+            cp -R "$d/." allure-results/
+          done
+      - name: Consolidate test-results into merged-test-results
+        if: always()
         run: |
           mkdir -p merged-test-results
-          for dir in artifacts/test-results-*/test-results; do
-            cp -r $dir/* merged-test-results/
+          find artifacts -type d -name "test-results" -print0 | while IFS= read -r -d '' d; do
+            cp -R "$d/." merged-test-results/
           done
-      - name: Upload Merged Test Results
-        uses: actions/upload-artifact@v4.6.2
+      - name: Upload merged test-results artifact
+        if: always()
+        uses: actions/upload-artifact@v5
         id: merged-artifact-upload
         with:
           name: merged-test-results
           path: merged-test-results/
           retention-days: 7
-      - name: Merge Allure Results
-        run: |
-          mkdir -p allure-results
-          for dir in artifacts/test-results-*/allure-results; do
-            cp -r $dir/* allure-results/
-          done
-      - name: Link Git Information And Browser Version To Allure Report
-        working-directory: allure-results
+      - name: Link Git Information And Browser Version To Allure Results
         if: always()
+        working-directory: allure-results
         run: |
           {
-           echo BUILD_URL=${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-           echo GIT_BRANCH=${{ github.head_ref || github.ref_name }}
-           echo GIT_COMMIT_ID=${{ github.sha }}
-           echo GIT_COMMIT_MESSAGE=$(git show -s --format=%s HEAD)
-           echo GIT_COMMIT_AUTHOR_NAME=$(git show -s --format='%ae' HEAD)
-           echo GIT_COMMIT_TIME=$(git show -s --format=%ci HEAD)
-           echo CHROME_VERSION=$(google-chrome --product-version)
+            echo BUILD_URL=${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+            echo GIT_BRANCH=${{ github.ref_name }}
+            echo GIT_COMMIT_ID=${{ github.sha }}
+            echo GIT_COMMIT_MESSAGE="$(git show -s --format=%s HEAD)"
+            echo GIT_COMMIT_AUTHOR_NAME="$(git show -s --format='%ae' HEAD)"
+            echo GIT_COMMIT_TIME="$(git show -s --format=%ci HEAD)"
+            echo CHROME_VERSION="$(google-chrome --product-version 2>/dev/null || true)"
           } >> environment.properties
-      - name: Link Playwright Traces And Videos To Allure Report
+      - name: Link Playwright Traces And Videos To Allure Results
+        if: always()
         working-directory: allure-results
-        if: contains(needs.*.result, 'failure')
         run: echo ARTIFACT_URL=${{ steps.merged-artifact-upload.outputs.artifact-url }} >> environment.properties
-      - name: Generate Allure Report
-        uses: simple-elf/allure-report-action@v1.13
+      - name: Generate Allure report
         if: always()
-        id: allure-report
-        with:
-          allure_results: allure-results
-          allure_report: allure-report
-          gh_pages: gh-pages
-          allure_history: allure-history
-      - name: Deploy Report To Github Pages
+        run: npx -y allure generate allure-results --output allure-report
+      - name: Upload Pages artifact
         if: always()
-        uses: peaceiris/actions-gh-pages@v4
+        uses: actions/upload-pages-artifact@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: allure-history
+          path: allure-report
+  deploy_pages:
+    needs: build-report
+    if: always()
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
