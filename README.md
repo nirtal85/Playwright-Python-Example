@@ -56,6 +56,7 @@ This project implements the concepts discussed in the following **TestShift** ar
 * [Test Automation - How to Sync Playwright Versions Between Python and GitHub Actions](https://www.test-shift.com/posts/test-automation-how-to-sync-playwright-versions-between-python-and-github-actions)
 * [From Open Source to Industry Sponsorship: The TestShift Journey with BrowserStack](https://www.test-shift.com/posts/from-open-source-to-enterprise-sponsorship-the-testshift-journey-with-browserstack)
 * [From Selenium to Playwright: A Data-Driven Look at the Shifting Landscape of Test Automation](https://www.test-shift.com/posts/from-selenium-to-playwright-a-data-driven-look-at-the-shifting-landscape-of-test-automation)
+* [Allure 3 Isn’t Just an Upgrade. It’s the Final Piece of the Quality Gate Architecture](https://www.test-shift.com/posts/allure-3-leave-the-swamp-ride-the-dragon)
 
 ---
 
