@@ -1,17 +1,17 @@
 [dependency-groups]
 dev = [
-  "ruff==0.14.1",
-  "pre-commit==4.3.0"
+  "ruff==0.14.14",
+  "pre-commit==4.5.1"
 ]
 
 [project]
 dependencies = [
-  "allure-pytest==2.15.0",
-  "axe-playwright-python==0.1.5",
-  "playwright==1.55.0",
-  "pytest==8.4.2",
+  "allure-pytest==2.15.3",
+  "axe-playwright-python==0.1.7",
+  "playwright==1.57.0",
+  "pytest==9.0.2",
   "pytest-base-url==2.1.0",
-  "pytest-playwright==0.7.1",
+  "pytest-playwright==0.7.2",
   "pytest-split==0.10.0",
   "requests==2.32.5"
 ]
