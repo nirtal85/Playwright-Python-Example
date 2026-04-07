@@ -41,7 +41,7 @@ jobs:
           uv venv
           uv sync --all-extras --dev
       - name: Test with pytest
-        run: xvfb-run .venv/bin/python -m pytest -m devRun --base-url ${{ vars.BASE_URL }}
+        run: xvfb-run .venv/bin/python -m pytest -m devRun -n 2 --base-url ${{ vars.BASE_URL }}
       - name: Auto-assign reviewers
         uses: kentaro-m/auto-assign-action@v2.0.2
         if: success()
