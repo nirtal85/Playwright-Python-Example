@@ -2,7 +2,7 @@
 dev = [
   "ruff==0.15.9",
   "pre-commit==4.5.1",
-  "pytest-flakiness==0.17.0",
+  "pytest-flakiness==0.17.0"
 ]
 
 [project]
@@ -14,6 +14,7 @@ dependencies = [
   "pytest-base-url==2.1.0",
   "pytest-playwright==0.7.2",
   "pytest-split==0.11.0",
+  "pytest-xdist==3.8.0",
   "requests==2.33.1"
 ]
 description = "Playwright Python example project with pytest and Allure report"
