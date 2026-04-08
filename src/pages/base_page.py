@@ -1,3 +1,5 @@
+# BasePage for Playwright reusable actions
+
 from playwright.sync_api import Page, expect
 
 
