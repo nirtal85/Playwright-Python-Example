@@ -156,3 +156,10 @@ If this architecture helped you solve a problem or save time, consider supportin
 [Visit TestShift.com for more Architectural Insights](https://www.test-shift.com)
 
 </div>
+
+
+## Enhancements by Me
+
+- Added a `BasePage` to centralize reusable Playwright browser actions such as click and fill.
+- Improved framework maintainability by following the Page Object Model design pattern.
+- Extended the framework structure to support scalable test development.
