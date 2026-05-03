@@ -24,16 +24,16 @@ jobs:
     timeout-minutes: 15
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.58.2
+      image: mcr.microsoft.com/playwright:v1.59.1
     steps:
       - name: Checkout
         uses: actions/checkout@v6
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
-          python-version: "3.13"
+          python-version: "3.14"
       - name: Set up uv
-        uses: astral-sh/setup-uv@v7
+        uses: astral-sh/setup-uv@v8.1.0
         with:
           enable-cache: true
       - name: Create venv & install dependencies
@@ -80,7 +80,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Upload Pages artifact
         if: always()
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v5
         with:
           path: allure-report
   deploy_pages:
