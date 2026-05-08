@@ -40,7 +40,7 @@ jobs:
     needs: setup-matrix
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.58.2
+      image: mcr.microsoft.com/playwright:v1.59.1
     strategy:
       fail-fast: false
       matrix: ${{ fromJson(needs.setup-matrix.outputs.matrix) }}
@@ -52,7 +52,7 @@ jobs:
         with:
           python-version: "3.13"
       - name: Set up uv
-        uses: astral-sh/setup-uv@v7
+        uses: astral-sh/setup-uv@v8.1.0
         with:
           enable-cache: true
       - name: Create venv & install dependencies
@@ -133,7 +133,7 @@ jobs:
         run: npx -y allure generate allure-results --output allure-report
       - name: Upload Pages artifact
         if: always()
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v5
         with:
           path: allure-report
   deploy_pages:
