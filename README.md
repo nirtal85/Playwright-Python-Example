@@ -145,6 +145,8 @@ Drag & Drop the trace file (located in test-results/) generated after a failure.
 
 Time Travel: Move back and forth in the timeline to see exactly what happened (Network, DOM, Console).
 
+---
+
 <div align="center">
 
 Found this project useful?
