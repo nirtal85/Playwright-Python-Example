@@ -9,6 +9,25 @@
   "pre-commit": {
     "enabled": true
   },
+  "packageRules": [
+    {
+      "description": "Keep CI workflows pinned to Python 3.13",
+      "matchManagers": [
+        "github-actions"
+      ],
+      "matchDatasources": [
+        "python-version"
+      ],
+      "matchDepNames": [
+        "python"
+      ],
+      "matchFileNames": [
+        ".github/workflows/devRun.yml",
+        ".github/workflows/nightly.yml"
+      ],
+      "enabled": false
+    }
+  ],
   "schedule": [
     "monthly"
   ]
