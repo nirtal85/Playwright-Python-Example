@@ -6,17 +6,12 @@
     "config:recommended",
     "group:all"
   ],
-  "pre-commit": {
-    "enabled": true
-  },
   "packageRules": [
     {
       "description": "Keep CI workflows pinned to Python 3.13",
-      "matchManagers": [
-        "github-actions"
-      ],
+      "enabled": false,
       "matchDatasources": [
-        "python-version"
+        "github-releases"
       ],
       "matchDepNames": [
         "python"
@@ -25,9 +20,14 @@
         ".github/workflows/devRun.yml",
         ".github/workflows/nightly.yml"
       ],
-      "enabled": false
+      "matchManagers": [
+        "github-actions"
+      ]
     }
   ],
+  "pre-commit": {
+    "enabled": true
+  },
   "schedule": [
     "monthly"
   ]
