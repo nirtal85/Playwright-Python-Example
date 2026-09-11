@@ -1,6 +1,6 @@
 [dependency-groups]
 dev = [
-  "ruff==0.16.4",
+  "ruff==0.16.7",
   "pre-commit==4.6.2",
   "pytest-flakiness==1.2.0",
 ]
