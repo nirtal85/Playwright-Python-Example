@@ -22,7 +22,8 @@ uv run --locked playwright install chromium
 On Linux, missing system libraries require `uv run --locked playwright install --with-deps chromium`
 with appropriate package-manager privileges. On macOS/Windows, use the normal browser install above.
 `uv sync` creates `.venv`; `uv run` avoids platform-specific activation commands.
-Preserve existing compatible environments. If locked sync fails, report the error instead of upgrading dependencies or regenerating `uv.lock`.
+Treat `.venv` as the project environment: `uv sync` aligns it with the lockfile and selected dependency groups, removing packages not selected for installation, including manually installed extras.
+If locked sync fails, report the error instead of upgrading dependencies or regenerating `uv.lock`.
 Install additional browser engines only if needed. Do not copy a browser version from a container tag: the installed Python package determines the required browser build.
 
 ## Configure
