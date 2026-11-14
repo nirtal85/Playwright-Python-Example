@@ -36,12 +36,14 @@ Do not invent credentials, overwrite existing local configuration, or assume `BA
 ## Finish setup
 
 Setup is complete when locked dependency sync and the Chromium installer exit successfully.
+Read the installer output: Playwright can report missing system libraries as host-validation warnings without failing. Resolve those warnings using the Linux dependency installation above; if blocked, report setup as incomplete and list the unresolved dependencies.
 Stop there: do not collect or run tests, launch a browser, or visit the target application unless explicitly requested.
 Successful installation is not a claim that application tests pass.
 
 ## Report and troubleshoot
 
-Report dependency and Chromium installation outcomes, and state that tests were not run.
+Report dependency and Chromium installation outcomes, any unresolved host-validation warnings, and state that tests were not run and display support was not checked.
+The default pytest configuration is headed. On Linux without a display, Xvfb is an option for a separately requested test run; do not install it or run tests as part of this setup.
 For missing browser binaries, repeat the environment-scoped installer; for missing shared libraries, install Linux dependencies.
 For blocked downloads, report the URL/error and retain TLS/proxy settings.
 Leave application code, fixtures, and lockfiles unchanged during setup.
