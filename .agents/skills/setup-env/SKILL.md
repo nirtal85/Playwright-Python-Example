@@ -16,7 +16,6 @@ Current CI uses Python 3.13; the `requires-python` range in `pyproject.toml` is 
 ```bash
 uv python install 3.13
 uv sync --python 3.13 --locked --all-extras --dev
-uv run --locked python --version
 uv run --locked playwright install chromium
 ```
 
@@ -33,54 +32,15 @@ Inspect tests before changing the target; page objects expect that application's
 The repository has no `.env.example`, and its default Sauce Demo tests do not require a new secrets file.
 Do not invent credentials, overwrite existing local configuration, or assume `BASE_URL` alone changes pytest's target.
 
-## Verify
+## Finish setup
 
-Collect tests without executing browser fixtures or navigating to the application:
-
-```bash
-uv run --locked pytest --collect-only -q -o addopts=
-```
-
-Check Chromium independently of the repository's headed fixtures.
-The same command works in Bash and PowerShell:
-
-```bash
-uv run --locked python -c "
-from playwright.sync_api import sync_playwright
-
-with sync_playwright() as playwright:
-    browser = playwright.chromium.launch(headless=True)
-    try:
-        page = browser.new_page()
-        page.set_content('<title>setup-env</title>')
-        assert page.title() == 'setup-env'
-    finally:
-        browser.close()
-print('Chromium launch passed')
-"
-```
-
-After confirming the intended website, run the application's pre-merge selection:
-
-```bash
-uv run --locked pytest -m devRun
-```
-
-On Linux without a display, install Xvfb through the distribution's package manager and use:
-
-```bash
-xvfb-run -a uv run --locked pytest -m devRun
-```
-
-Both `pyproject.toml` (`--headed`) and `tests/conftest.py` (`headless: False`) force headed execution.
-Removing `--headed` alone does not make the suite headless.
-The application selection contacts external websites; collection and the standalone browser check avoid those application fixtures.
-`sanity` is not a registered suite marker here.
+Setup is complete when locked dependency sync and the Chromium installer exit successfully.
+Stop there: do not collect or run tests, launch a browser, or visit the target application unless explicitly requested.
+Successful installation is not a claim that application tests pass.
 
 ## Report and troubleshoot
 
-Report interpreter, locked installation, collection, browser launch, and application tests separately with their actual outcomes and skipped reasons.
-Do not claim end-to-end success from collection alone.
-For missing browser binaries, repeat the environment-scoped installer; for missing shared libraries, install Linux dependencies; for display errors, use Xvfb.
+Report dependency and Chromium installation outcomes, and state that tests were not run.
+For missing browser binaries, repeat the environment-scoped installer; for missing shared libraries, install Linux dependencies.
 For blocked downloads, report the URL/error and retain TLS/proxy settings.
 Leave application code, fixtures, and lockfiles unchanged during setup.

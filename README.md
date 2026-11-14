@@ -82,7 +82,7 @@ This project is powered by **[BrowserStack](https://www.browserstack.com)**, ena
 
 ## Agent environment setup
 
-For an AI coding agent, use the repository's [`setup-env` skill](.agents/skills/setup-env/SKILL.md) to install dependencies, prepare Chromium, and verify the environment. In Codex, invoke it with `$setup-env`.
+For an AI coding agent, use the repository's [`setup-env` skill](.agents/skills/setup-env/SKILL.md) to install locked dependencies and Chromium without running tests. In Codex, invoke it with `$setup-env`.
 
 ## ⚙️ Getting Started
 
