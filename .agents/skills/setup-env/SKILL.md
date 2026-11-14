@@ -11,7 +11,7 @@ Work from the repository root. Use the checked-in lockfile and the Playwright pa
 
 Inspect `pyproject.toml`, `uv.lock`, and `.github/workflows/devRun.yml`.
 Use `uv`; if missing, install it using https://docs.astral.sh/uv/getting-started/installation/.
-Current CI uses Python 3.13; `~=3.11` is not an exact Python 3.11 pin.
+Current CI uses Python 3.13; the `requires-python` range in `pyproject.toml` is not an exact interpreter pin.
 
 ```bash
 uv python install 3.13
@@ -41,22 +41,23 @@ Collect tests without executing browser fixtures or navigating to the applicatio
 uv run --locked pytest --collect-only -q -o addopts=
 ```
 
-Check Chromium independently of the repository's headed fixtures:
+Check Chromium independently of the repository's headed fixtures.
+The same command works in Bash and PowerShell:
 
 ```bash
-uv run --locked python - <<'PY'
+uv run --locked python -c "
 from playwright.sync_api import sync_playwright
 
 with sync_playwright() as playwright:
     browser = playwright.chromium.launch(headless=True)
     try:
         page = browser.new_page()
-        page.set_content("<title>setup-env</title>")
-        assert page.title() == "setup-env"
+        page.set_content('<title>setup-env</title>')
+        assert page.title() == 'setup-env'
     finally:
         browser.close()
-print("Chromium launch passed")
-PY
+print('Chromium launch passed')
+"
 ```
 
 After confirming the intended website, run the application's pre-merge selection:
